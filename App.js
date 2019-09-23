@@ -49,7 +49,7 @@ const App = () => {
                   <Icon name="ios-people" />
                 </Item>
                 <Button transparent>
-                  <Text>Search cakep</Text>
+                  <Text>Search cakep </Text>
                 </Button>
               </Header>
             </Container>
