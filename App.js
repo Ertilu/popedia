@@ -54,7 +54,8 @@ const App = () => {
               </Header>
             </Container>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>POPEDIA FIXXX</Text>
+              <Text style={styles.sectionTitle}>POPEDIA</Text>
+              <Text style={styles.sectionTitle}>FIX BANGET BISA PUSH</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>Apaa.js</Text> to change this
                 screen and then come back to see your edits.
