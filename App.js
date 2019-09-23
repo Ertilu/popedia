@@ -54,13 +54,7 @@ const App = () => {
               </Header>
             </Container>
             <View style={styles.sectionContainer}>
-<<<<<<< HEAD
-              <Text style={styles.sectionTitle}>POPEDIA try to collaboration again</Text>
-=======
-              <Text style={styles.sectionTitle}>Popedia</Text>
-              <Text style={styles.sectionTitle}>PO</Text>
-
->>>>>>> c6e2628832e192fd92f11373b133d9d007bbf903
+              <Text style={styles.sectionTitle}>POPEDIA FIXXX</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>Apaa.js</Text> to change this
                 screen and then come back to see your edits.
