@@ -54,11 +54,9 @@ const App = () => {
               </Header>
             </Container>
             <View style={styles.sectionContainer}>
-<<<<<<< HEAD
               <Text style={styles.sectionTitle}>Popedia</Text>
-=======
               <Text style={styles.sectionTitle}>PO</Text>
->>>>>>> 3b3e9033b1d201076248687e1ef24cec7d2d36e0
+
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
