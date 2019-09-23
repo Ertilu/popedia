@@ -49,7 +49,7 @@ const App = () => {
                   <Icon name="ios-people" />
                 </Item>
                 <Button transparent>
-                  <Text>Search</Text>
+                  <Text>Misterius</Text>
                 </Button>
               </Header>
             </Container>
