@@ -42,14 +42,14 @@ const App = () => {
           )}
           <View style={styles.body}>
             <Container>
-            <Header searchBar rounded>
+              <Header searchBar rounded>
                 <Item>
                   <Icon name="ios-search" />
                   <Input placeholder="Search" />
                   <Icon name="ios-people" />
                 </Item>
                 <Button transparent>
-                  <Text>Search</Text>
+                  <Text>Search cakep</Text>
                 </Button>
               </Header>
             </Container>
