@@ -24,6 +24,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+
 const App = () => {
   return (
     <Fragment>
@@ -39,8 +41,20 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
+            <Container>
+            <Header searchBar rounded>
+                <Item>
+                  <Icon name="ios-search" />
+                  <Input placeholder="Search" />
+                  <Icon name="ios-people" />
+                </Item>
+                <Button transparent>
+                  <Text>Search</Text>
+                </Button>
+              </Header>
+            </Container>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>POPEDIA</Text>
+              <Text style={styles.sectionTitle}>Popedia</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
