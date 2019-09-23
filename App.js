@@ -40,7 +40,7 @@ const App = () => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>POPEDIA anjir connect dong</Text>
+              <Text style={styles.sectionTitle}>POPEDIA try to collaboration</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
