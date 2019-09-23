@@ -62,7 +62,7 @@ const App = () => {
 
 >>>>>>> c6e2628832e192fd92f11373b133d9d007bbf903
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
+                Edit <Text style={styles.highlight}>Apa.js</Text> to change this
                 screen and then come back to see your edits.
               </Text>
             </View>
