@@ -19,7 +19,7 @@ import {
 const App = () => {
   return (
     <Fragment>
-      <View><Text>Lets get............</Text></View>
+      <View><Text>Start ngoding</Text></View>
     </Fragment>
   );
 };
