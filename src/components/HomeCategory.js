@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
 })
 
 
-
 export default class Menu extends Component {
 
   state = {
@@ -70,7 +69,8 @@ export default class Menu extends Component {
         name: 'Peralatan Masak',
         imageIcon: 'https://ecs7.tokopedia.net/img/cache/200/attachment/2019/2/22/40768394/40768394_29284b9e-d48e-414f-91c9-b3569bcfc5ea.png'
       },
-    ]
+    ],    
+      categories: []
   }
 
   render() {
@@ -99,5 +99,26 @@ export default class Menu extends Component {
       </ScrollView>
     )
   }
-
 }
+  // <ScrollView
+  //       horizontal={true}
+  //       showsHorizontalScrollIndicator={false}
+  //     >
+  //       <View style={styles.featuredWrappper}>
+  //         {this.state.featuredMenu.map((menu, i)=> (
+  //         <Button
+  //           key={i}
+  //           transparent
+  //           style={styles.featuredMenu}
+  //         >
+  //           <Image
+  //             source={{uri: menu.imageIcon}}
+  //             style={styles.menuIcon}
+  //           />
+  //           <Text numberOfLines={2} style={styles.menuText}>
+  //             {menu.name}
+  //           </Text>
+  //         </Button>
+  //         ))}
+  //       </View>
+  //     </ScrollView>

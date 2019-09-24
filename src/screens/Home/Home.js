@@ -27,6 +27,7 @@ import Slider from "../../components/Slider";
 import Menu from "../../components/Menu";
 import HomeCategory from "../../components/HomeCategory";
 import ProductList from "../../components/ProductList";
+import axios from 'axios';
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 200
@@ -35,9 +36,34 @@ class Home extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.state = {
+       categories: [],
+       isLoading: true,
        scrollY : new Animated.Value(0),
        scroll : 0
     }
+  }
+
+  componentDidMount() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    axios 
+    .get('http://192.168.0.111:4869/api/categories')
+    .then(response =>
+      response.data.data.map(category => ({
+        id: `${category._id}`,
+        name: `${category.name}`,
+      }))
+    )
+    .then(categories => {
+      this.setState({
+        categories,
+        isLoading: false
+      })
+    })
+ 
+    .catch(error => this.setState({ error, isLoading: false }));
   }
 
   handleScroll(event) {
@@ -86,7 +112,20 @@ class Home extends React.Component<Props, State> {
 
           </View>
           <Slider />
-          <Menu />
+          {
+            !this.state.isLoading ? (        
+            this.state.categories.map(category => { 
+              return (
+                <Menu 
+                     key={category.id}
+                      {...category}
+                />       
+              );
+            })
+            ) : (
+              <Text>Loading...</Text>
+            )
+          } 
           <HomeCategory />
           <ProductList navigation={navigation} />
         </Content>

@@ -10,11 +10,6 @@ import Home from "./screens/home";
 import Sidebar from "./screens/sidebar";
 import Product from './screens/product';
 
-
-
-
-
-
 const AppNavigator = createStackNavigator(
   {
     Login: { screen: Login },

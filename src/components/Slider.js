@@ -32,6 +32,8 @@ class Slider extends Component {
         image: 'https://ecs7.tokopedia.net/img/banner/2019/6/26/20723472/20723472_5ea87185-63ee-4436-9b51-b063a90f9d38'
       }, {
         image: 'https://ecs7.tokopedia.net/img/banner/2019/6/26/20723472/20723472_69d5c086-e8f5-478e-8c53-953caa72f7dd'
+      }, {
+        image: 'https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2015/10/blog.jpg'
       }
     ]
 
@@ -41,7 +43,7 @@ class Slider extends Component {
       }}>
         <Swiper
           autoplay
-          autoplayTimeout={2}
+          autoplayTimeout={3}
           dotStyle={styles.swiperDot}
           activeDotStyle={styles.swiperActiveDot}
           style={{height: 120}}
