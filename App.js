@@ -19,7 +19,7 @@ import {
 const App = () => {
   return (
     <Fragment>
-      <View><Text>Lets get oke bro</Text></View>
+      <View><Text>Lets get............</Text></View>
     </Fragment>
   );
 };
