@@ -20,7 +20,6 @@ const App = () => {
   return (
     <Fragment>
       <View><Text>Lets get............</Text></View>
-      <View><Text>START</Text></View>
     </Fragment>
   );
 };
