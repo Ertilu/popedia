@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react';
 
-import Router from './src/screens/router';
+import {
+  View,
+  Text
+} from 'react-native';
 
 const App = () => {
   return (
     <Fragment>
-      <Router />
+      <View><Text>HALOOOOOOOOOOOOOO</Text></View>
     </Fragment>
   );
 };
