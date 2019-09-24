@@ -112,20 +112,7 @@ class Home extends React.Component<Props, State> {
 
           </View>
           <Slider />
-          {
-            !this.state.isLoading ? (        
-            this.state.categories.map(category => { 
-              return (
-                <Menu 
-                     key={category.id}
-                      {...category}
-                />       
-              );
-            })
-            ) : (
-              <Text>Loading...</Text>
-            )
-          } 
+          <Menu />       
           <HomeCategory />
           <ProductList navigation={navigation} />
         </Content>

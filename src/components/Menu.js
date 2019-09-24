@@ -83,6 +83,34 @@ export default class Menu extends Component {
         showsHorizontalScrollIndicator={false}
       >
         <View style={styles.featuredWrappper}>
+          {this.state.featuredMenu.map((menu, i)=> (
+          <Button
+            key={menu.id}
+            transparent
+            style={styles.featuredMenu}
+          >
+            <Image
+              source={{uri: 'https://upload.wikimedia.org/wikipedia/id/1/13/Tokopedia_Icon.png'}}
+              style={styles.menuIcon}
+            />
+            <Text numberOfLines={2} style={styles.menuText}>
+              {name}
+            </Text>
+          </Button>
+          ))}
+        </View>
+      </ScrollView>
+    )
+  }
+}
+
+
+
+ {/* <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
+        <View style={styles.featuredWrappper}>
           <Button
             key={id}
             transparent
@@ -93,30 +121,4 @@ export default class Menu extends Component {
             </Text>
           </Button>
         </View>
-      </ScrollView>
-    )
-  }
-
-}
-//  <ScrollView
-//         horizontal={true}
-//         showsHorizontalScrollIndicator={false}
-//       >
-//         <View style={styles.featuredWrappper}>
-//           {/* {this.state.featuredMenu.map((menu, i)=> ( */}
-//           <Button
-//             key={menu.id}
-//             transparent
-//             style={styles.featuredMenu}
-//           >
-//             <Image
-//               source={{uri: menu.imageIcon}}
-//               style={styles.menuIcon}
-//             />
-//             <Text numberOfLines={2} style={styles.menuText}>
-//               {menu.name}
-//             </Text>
-//           </Button>
-//           {/* ))} */}
-//         </View>
-//       </ScrollView>
+      </ScrollView> */}
