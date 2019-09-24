@@ -89,10 +89,10 @@ export default class Menu extends Component {
             transparent
             style={styles.featuredMenu}
           >
-            <Image
+            {/* <Image
               source={{uri: 'https://upload.wikimedia.org/wikipedia/id/1/13/Tokopedia_Icon.png'}}
               style={styles.menuIcon}
-            />
+            /> */}
             <Text numberOfLines={2} style={styles.menuText}>
               {name}
             </Text>
