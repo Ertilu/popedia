@@ -7,7 +7,12 @@ import Home from "./home/Home";
 
 const Router = createStackNavigator(
     {
-        Home: { screen: Home }
+        Home: {
+            screen: Home,
+            navigationOptions: {
+                header: null,
+            },
+        }
     },
     {
         initialRouteName: "Home",
