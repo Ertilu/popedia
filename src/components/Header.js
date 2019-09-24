@@ -53,7 +53,7 @@ const HeaderComponent = (props) => {
               paddingLeft: 10
             }}>
               <Icon style={{ color: '#B3BAC3', fontSize: 18 }} name="ios-search" />
-              <Input placeholderTextColor='#B3BAC3' style={{ fontSize: 16 }} placeholder="Cari di Tokopedia" />
+              <Input placeholderTextColor='#B3BAC3' style={{ fontSize: 16 }} placeholder="Cari di Popedia" />
             </Animated.View>
             <View style={{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => navigation.navigate("Login")}> 
