@@ -5,7 +5,7 @@ import {
   Text
 } from 'react-native';
 
-const App = () => {
+const Register = () => {
   return (
     <Fragment>
       <View><Text>This is register page</Text></View>
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-export default App;   
+export default Register;   
