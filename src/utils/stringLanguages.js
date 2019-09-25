@@ -65,7 +65,8 @@ let strings = new LocalizedStrings({
         product_info: 'Product Info',
         next: 'Next',
         login_option: 'or sign in with',
-        phone_or_email: 'Phone Number or Email'
+        phone_or_email: 'Phone Number or Email',
+        password: 'Enter password'
     }
 });
 

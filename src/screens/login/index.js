@@ -71,6 +71,12 @@ class LoginForm extends React.Component {
           component={this.renderInput}
           validate={[minLength8, required]}
         />
+        <Field
+          name="password"
+          label={lang.password}
+          component={this.renderInput}
+          validate={[minLength8, required]}
+        />
       </Form>
     );
     return (
