@@ -8,7 +8,6 @@ import {
   ScrollView 
 } from 'react-native'
 import { Button } from 'native-base'
-import axios from 'axios';
 
 const styles = StyleSheet.create({
   featuredWrappper: {
@@ -36,7 +35,10 @@ const styles = StyleSheet.create({
   },
 })
 
+
+
 export default class Menu extends Component {
+
   state = {
     featuredMenu: [
       {
@@ -71,30 +73,28 @@ export default class Menu extends Component {
         name: 'Flight',
         imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/4/1/3127195/3127195_2258af2c-550d-4b7f-a8d4-f62178070ed8.png'
       },
-    ],
-    categories: []
+    ]
   }
 
   render() {
-    const { id, name } = this.props
     return(
-       <ScrollView
+      <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       >
         <View style={styles.featuredWrappper}>
           {this.state.featuredMenu.map((menu, i)=> (
           <Button
-            key={menu.id}
+            key={i}
             transparent
             style={styles.featuredMenu}
           >
-            {/* <Image
-              source={{uri: 'https://upload.wikimedia.org/wikipedia/id/1/13/Tokopedia_Icon.png'}}
+            <Image
+              source={{uri: menu.imageIcon}}
               style={styles.menuIcon}
-            /> */}
+            />
             <Text numberOfLines={2} style={styles.menuText}>
-              {name}
+              {menu.name}
             </Text>
           </Button>
           ))}
@@ -102,23 +102,5 @@ export default class Menu extends Component {
       </ScrollView>
     )
   }
+
 }
-
-
-
- {/* <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View style={styles.featuredWrappper}>
-          <Button
-            key={id}
-            transparent
-            style={styles.featuredMenu}
-          >      
-            <Text numberOfLines={2} style={styles.menuText}>
-                {name}
-            </Text>
-          </Button>
-        </View>
-      </ScrollView> */}

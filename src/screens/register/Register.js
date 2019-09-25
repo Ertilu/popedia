@@ -8,7 +8,7 @@ import {
 const App = () => {
   return (
     <Fragment>
-      <View><Text>coffe</Text></View>
+      <View><Text>This is register page</Text></View>
     </Fragment>
   );
 };

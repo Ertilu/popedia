@@ -1,4 +1,4 @@
-  // @flow
+// @flow
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
@@ -6,6 +6,7 @@ import { Root } from "native-base";
 
 import { Easing, Animated } from 'react-native';
 import Login from "./screens/login";
+import Register from "./screens/register/Register";
 import Home from "./screens/home";
 import Sidebar from "./screens/sidebar";
 import Product from './screens/product';
@@ -13,6 +14,7 @@ import Product from './screens/product';
 const AppNavigator = createStackNavigator(
   {
     Login: { screen: Login },
+    Register: { screen: Register },
     Home: { screen: Home },
     Product: { screen: Product }
   },

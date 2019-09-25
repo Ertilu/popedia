@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Platform } from "react-native";
+import { Image, Platform, TouchableOpacity } from "react-native";
 import { 
   Container, 
   Content, 
@@ -31,7 +31,7 @@ class Login extends React.Component {
             <Title style={styles.textHeader}>{lang.login}</Title>
           </Body>
           <Right>
-            <Button onPress={() => navigation.navigate("Home")} transparent>
+            <Button onPress={() => navigation.navigate("Register")} transparent>
               <Text style={{ color: '#2aaa4d' }} uppercase={false}>{lang.signup}</Text>
             </Button>
           </Right>
@@ -57,8 +57,9 @@ class Login extends React.Component {
               <Icon style={styles.iconMedia} type="FontAwesome" name='yahoo' />
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
-
-             <Text style={styles.loginOption}>{lang.not_have_account} {lang.signup}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+              <Text style={styles.loginOption}>{lang.not_have_account} {lang.signup}</Text>
+            </TouchableOpacity>
           </View>
 
         </Content>

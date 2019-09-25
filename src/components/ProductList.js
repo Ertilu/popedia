@@ -84,8 +84,7 @@ export default class ProductList extends Component {
     for (let i = 1; i <= 10; i++) {
       listMenu.push(
       {
-        // name: "Kurta Zipper Linen/ Baju Koko Pria/ Kemeja Muslim/ Baju Muslim Pria",
-        name: "Baju Muslim Pria",
+        name: "Kurta Zipper Linen/ Baju Koko Pria/ Kemeja Muslim/ Baju Muslim Pria",
         image: "https://ecs7.tokopedia.net/img/cache/200-square/product-1/2018/4/20/7749740/7749740_b1c479d3-e1b4-48f4-9cf9-bbffbcd15d3d_700_700.jpg",
         price: "Rp 185.000",
         star: 4,
