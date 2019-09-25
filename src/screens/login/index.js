@@ -23,20 +23,20 @@ const alphaNumeric = value =>
 
 
 
-class LoginForm extends React.Component{
+class LoginForm extends React.Component {
 
 
   renderInput({ input, label, type, meta: { touched, error, warning } }) {
     return (
       <Item
         style={{
-            borderColor: '#2aaa4d',
-            borderBottomWidth: 2,
-            width: '90%'
-          }} 
+          borderColor: '#2aaa4d',
+          borderBottomWidth: 2,
+          width: '90%'
+        }}
         error={error && touched}
         floatingLabel
-        >
+      >
         <Label style={{ fontSize: 13, color: 'gray' }} >{label}</Label>
         <Input
           autoFocus
@@ -52,7 +52,7 @@ class LoginForm extends React.Component{
       this.props.navigation.navigate("Home");
     } else {
       Toast.show({
-        text: "Enter Valid Username & password!",
+        text: "Enter Valid Username & password gan!",
         duration: 2000,
         position: "top",
         textStyle: { textAlign: "center" }

@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 
-const styles: any = StyleSheet.create({
+const styles = StyleSheet.create({
 	container: {
 		backgroundColor: "white",
 	},

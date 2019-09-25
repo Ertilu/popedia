@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 class Slider extends Component {
 
   render() {
-    const banners =[
+    const banners = [
       {
         image: 'https://ecs7.tokopedia.net/img/banner/2019/6/26/20723472/20723472_5ea87185-63ee-4436-9b51-b063a90f9d38'
       }, {
@@ -35,7 +35,7 @@ class Slider extends Component {
       }
     ]
 
-    return(
+    return (
       <View style={{
         padding: 15
       }}>
@@ -44,17 +44,17 @@ class Slider extends Component {
           autoplayTimeout={2}
           dotStyle={styles.swiperDot}
           activeDotStyle={styles.swiperActiveDot}
-          style={{height: 120}}
+          style={{ height: 120 }}
           paginationStyle={styles.swiperPagination}
         >
-          {banners.map((banner, i)=> {
-            return(
+          {banners.map((banner, i) => {
+            return (
               <View
-                style={{flex: .9, justifyContent: 'flex-start'}}
+                style={{ flex: .9, justifyContent: 'flex-start' }}
                 key={i}
               >
                 <Image
-                  source={{uri: banner.image}}
+                  source={{ uri: banner.image }}
                   style={{
                     flex: 1,
                     height: '100%',
