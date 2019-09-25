@@ -124,9 +124,9 @@ class Home extends Component {
               this.state.categories.map((category, i) => { 
                 return (
                   <Menu
-                        key={i}
-                        {...category}
-                        index={i}
+                    key={category.id}
+                    {...category}
+                    index={i}
                   />
           
                 );

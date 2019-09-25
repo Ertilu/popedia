@@ -48,32 +48,36 @@ export default class Menu extends Component {
           imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/4/1/3127195/3127195_c6ea0950-24f1-4a11-9900-c96fc166cc63.png'
         },
         {
-          name: 'Belanja',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/4/1/3127195/3127195_2622f550-203a-4fba-95ba-7f94078dbe57.png'
+          name: 'Sports',
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_0c7bb35f-2dc9-4883-9e17-acf0fdb21b80.png'
         },      
         {
-          name: 'Top-Up & Tagihan',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/3/28/3127195/3127195_a1453389-4f6e-4c13-b266-e1ab85b28fef.png'
+          name: 'kitchen set',
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_36e0a99a-f8e7-45be-845a-69391d9a97a3.png'
         },
         {
           name: 'Travel & Entertainment',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/3/28/3127195/3127195_22e45d0b-71d1-498b-b188-5b222840b2d9.png'
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_ee66f583-11cb-4330-b00a-3a6966781a5e.png'
         },
         {
           name: 'Keuangan',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/3/28/3127195/3127195_061c17ea-bcd3-4f28-abaf-25aaf99477d9.png'
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_43f04b28-3f48-4c88-a84d-4cf2cc32e149.png'
         },      
         {
           name: 'Pulsa',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/5/17/47197032/47197032_b4121422-9a95-4291-af19-e0536730369d.png'
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_1d9cf415-ce56-4c59-a0a8-f48571f7dcb0.png'
         },
         {
           name: 'Tiket Kereta Api',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/4/30/3127195/3127195_1b0a84ad-f77a-487d-9a78-f37244f56ff0.png'
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_b37b299a-9ec5-4b63-b91c-f65e9d6fddc8.png'
         },      
         {
           name: 'Flight',
-          imageIcon: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/4/1/3127195/3127195_2258af2c-550d-4b7f-a8d4-f62178070ed8.png'
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_8cf3cc44-f4c9-4a17-849c-9dd7b7bb4689.png'
+        },
+        {
+          name: 'Flight',
+          imageIcon: 'https://ecs7.tokopedia.net/img/cache/50-square/attachment/2019/1/9/20723472/20723472_26602f8f-b349-4c20-ab44-44bee951034f.png'
         },
       ],
       categories: [],
@@ -84,6 +88,7 @@ export default class Menu extends Component {
 
   render() {
     const { id, name, index } = this.props;
+
     return( 
       <View style={styles.featuredWrappper}>
       <Button
