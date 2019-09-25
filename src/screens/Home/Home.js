@@ -12,7 +12,7 @@ import {
   List,
   ListItem,
 } from "native-base";
-
+import axios from 'axios';
 
 import {
   ScrollView,
@@ -37,7 +37,10 @@ class Home extends Component {
     super(props)
     this.state = {
       scrollY: new Animated.Value(0),
-      scroll: 0
+      scroll: 0,
+      categories: [],
+      isLoading: true,
+      errors: null
     }
   }
 
@@ -49,6 +52,31 @@ class Home extends Component {
       [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
       { onScroll: this.props.onScroll }
     )(event)
+  }
+
+  componentDidMount() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    const queryView = `http://192.168.0.111:4869/api/categories`
+    axios 
+    // .get("https://randomproduct.me/api/?results=5")
+    .get(queryView)
+    .then(response =>
+      response.data.data.map(category => ({
+        id: `${category._id}`,
+        name: `${category.name}`,
+      }))
+    )
+    .then(categories => {
+      this.setState({
+        categories,
+        isLoading: false
+      })
+    })
+ 
+    .catch(error => this.setState({ error, isLoading: false }));
   }
 
   render() {
@@ -87,7 +115,27 @@ class Home extends Component {
 
           </View>
           <Slider />
-          <Menu />
+          <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          >
+            {
+            !this.state.isLoading ? (        
+              this.state.categories.map((category, i) => { 
+                return (
+                  <Menu
+                        key={i}
+                        {...category}
+                        index={i}
+                  />
+          
+                );
+              })
+              ) : (
+                <Text>Loading...</Text>
+              )
+            } 
+          </ScrollView>
           <HomeCategory />
           <ProductList navigation={navigation} />
         </Content>
