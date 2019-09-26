@@ -47,7 +47,7 @@ export default class Maintenance extends Component {
                 </Card>
                 <Card>
                     <CardItem header>
-                    <H3>Alamat Pengiriman</H3>
+                    
                     </CardItem>
                 <CardItem>
                 <Body>
