@@ -130,8 +130,17 @@ const styles = StyleSheet.create({
 	},
 	leftAddress: {
 		color: 'green',
+		fontSize: 10,
 		borderWidth: 1,
-		borderLeftColor: 'green'
+		padding: 10,
+		borderColor: 'green'
+	},
+	rightAddress: {
+		color: 'green',
+		fontSize: 10,
+		borderWidth: 1,
+		padding: 10,
+		borderColor: 'green'
 	}
 });
 export default styles;

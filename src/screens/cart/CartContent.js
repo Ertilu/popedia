@@ -85,6 +85,9 @@ export default class CartContent extends Component {
 						<Text>
 							<Text style={{color:'#bdbdbd', fontSize:12}}>Catatan untuk penjual (Opsional)</Text> <Text style={{fontSize:12, color:'#1CC625'}}>Tulis Catatan</Text>
 						</Text>
+						<Item style={{borderColor:'#1CC625', flex:1, width:'100%', top:-10}}>
+							<Input value={''} style={{paddingBottom:0, fontSize:12}} />
+						</Item>
 					</View>
 				</Card>
 
@@ -130,7 +133,7 @@ export default class CartContent extends Component {
 							<Text style={{color:'#bdbdbd', fontSize:12}}>Catatan untuk penjual (Opsional)</Text> <Text style={{fontSize:12, color:'#1CC625'}}>Tulis Catatan</Text>
 						</Text>
 						<Item style={{borderColor:'#1CC625', flex:1, width:'100%', top:-10}}>
-							<Input value={'Emas'} style={{paddingBottom:0, fontSize:12}} />
+							<Input value={'Warna gold'} style={{paddingBottom:0, fontSize:12}} />
 						</Item>
 					</View>
 				</Card>
