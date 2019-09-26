@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {  Container, Header, Content, Card, CardItem, Text, Body, Left, Right, Title, Button, Icon, H3 } from "native-base";
 import { View, Image, TouchableOpacity } from 'react-native'
 import styles from './styles';
-import Cart from '../cart/CartContent'
+import Cart from './CheckoutContent';
+import { Grid, Col, Row } from 'react-native-easy-grid';
 
 export default class Maintenance extends Component {
   render() {
@@ -55,14 +56,17 @@ export default class Maintenance extends Component {
             </Card>
             <Cart />
             <Card style={styles.cardFull}>
-                <View style={styles.topInfo}>
-                    <H3>Total Tagihan</H3>
-                    <View style={styles.alternativeLayoutButtonContainer}>
-                    <Button transparent>
-                        <Text style={styles.total}>Ganti Alamat</Text>
-                    </Button>
-                </View>
-                </View>
+                <Row>
+                    <Col>
+                        <Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga (2 Barang)</Text>
+                        <Text style={{fontSize:15, color:'#ff5722'}}>Rp 14.399.000</Text>
+                    </Col>
+                    <Col>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>
+                        <Text style={styles.checkoutFooter}>Checkout</Text>
+                    </TouchableOpacity>
+                    </Col>
+                </Row>
             </Card>
         </Content>
     </Container>
