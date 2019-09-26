@@ -108,4 +108,4 @@ export default class BottomBar extends Component {
         </Footer>
     )
   }
-}
+} 
