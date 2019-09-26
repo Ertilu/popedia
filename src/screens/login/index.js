@@ -60,9 +60,9 @@ class LoginForm extends React.Component {
       });
     }
   }
-   
-  render() {  
-    const { lang } = this.props
+
+  render() {
+    // const { lang } = this.props
 
     const form = (
       <Form>
@@ -94,8 +94,8 @@ const LoginContainer = reduxForm({
   form: "login"
 })(LoginForm);
 
-const mapStateToProps = state => ({
-  lang: state.lang
-})
+// const mapStateToProps = state => ({
+//   lang: state.lang
+// })
 
-export default connect(mapStateToProps)(LoginContainer);
+export default LoginContainer;

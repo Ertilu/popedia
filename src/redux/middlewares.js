@@ -6,6 +6,6 @@ middlewares.push(promiseMiddleware);
 
 // middlewares logger
 // const logger = createLogger();
-// middlewares.push(logger);
+// middlewares.push(logger); 
 
 export default middlewares
