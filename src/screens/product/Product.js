@@ -166,7 +166,7 @@ class Home extends React.Component {
 
           <View style={[styles.boxShadow]}>
             <View>
-              <Text style={styles.title}>{lang.product_info}</Text>
+              <Text style={styles.title}>Info Produk :</Text>
               {
                 info.map(item => (
                   <View style={styles.infoList}>
@@ -178,7 +178,7 @@ class Home extends React.Component {
               <Text style={styles.description}></Text>
             </View>
             <View>
-              <Text style={styles.title}>{lang.product_description}</Text>
+              <Text style={styles.title}>Deskripsi Produk :</Text>
               <Text style={styles.description}>{description}</Text>
             </View>
           </View>

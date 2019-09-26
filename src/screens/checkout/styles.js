@@ -121,6 +121,17 @@ const styles = StyleSheet.create({
 		paddingLeft:15,
 		paddingRight:15,
 		flexDirection:'row'
+	},
+	alternativeLayoutButtonContainer: {
+		margin: 20,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	
+	},
+	leftAddress: {
+		color: 'green',
+		borderWidth: 1,
+		borderLeftColor: 'green'
 	}
 });
 export default styles;
