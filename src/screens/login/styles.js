@@ -21,6 +21,13 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 		marginBottom: 15
 	},
+	forgotPassword: {
+		textAlign: 'right',
+		color: 'green',
+		fontSize: 12,
+		marginTop: 15,
+		marginBottom: 15
+	},
 	buttonOption: {
 		borderColor: 'lightgray',
 		justifyContent: 'flex-start',

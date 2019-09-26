@@ -1,18 +1,18 @@
 import * as React from "react";
 import { Image, Platform, TouchableOpacity } from "react-native";
-import { 
-  Container, 
-  Content, 
-  Header, 
-  Body, 
-  Title, 
-  Button, 
-  Text, 
-  View, 
+import {
+  Container,
+  Content,
+  Header,
+  Body,
+  Title,
+  Button,
+  Text,
+  View,
   Footer,
   Left,
   Right,
-  Icon 
+  Icon
 } from "native-base";
 import styles from './styles'
 
@@ -38,6 +38,7 @@ class Login extends React.Component {
         </Header>
         <Content style={styles.content}>
           {this.props.loginForm}
+          <Text style={styles.forgotPassword} onPress={() => navigation.navigate("ForgotPassword")}>{lang.forgot_password}</Text>
           <View style={{ marginTop: 20 }} padder>
             <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.props.onLogin()}>
               <Text style={{ fontWeight: "600" }} uppercase={false} bold>{lang.next}</Text>
@@ -58,7 +59,7 @@ class Login extends React.Component {
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.loginOption}>{lang.not_have_account} {lang.signup}</Text>
+              <Text style={styles.loginOption}>{lang.not_have_account} <Text style={{ color: '#2aaa4d', fontSize: 13 }}> {lang.signup}</Text></Text>
             </TouchableOpacity>
           </View>
 

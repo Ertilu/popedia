@@ -30,17 +30,17 @@ import BottomBar from "../../components/BottomBar";
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
 
-class Home extends React.Component<Props, State> {
+class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      scrollY : new Animated.Value(0)
+      scrollY: new Animated.Value(0)
     }
   }
 
   handleScroll = (event) => {
     this.setState({
-      scrollY : event.nativeEvent.contentOffset.y
+      scrollY: event.nativeEvent.contentOffset.y
     })
   }
 
@@ -58,41 +58,41 @@ class Home extends React.Component<Props, State> {
 
     const item = navigation.getParam('item', {});
 
-    const images = item ? [ item.image ] : [];
+    const images = item ? [item.image] : [];
     const info = item.info || [];
     const description = item.description ? item.description.replace(/↵/gi, '\n') : '';
 
     return (
       <Container style={styles.container}>
-        <Animated.View style={[styles.header, {transform: [{translateY: headerTranslate }]} ]}>
-            <View>
-              <Button
-                transparent
-                onPress={()=>{ navigation.goBack() }}
-              >
-                <Icon style={styles.icon} name="arrow-back" />
-              </Button>
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-                <Button transparent>
-                  <Icon style={styles.icon} name="share" />
-                </Button>
-                <Button transparent>
-                  <Icon style={styles.icon} name="cart" />
-                </Button>
-                <Button transparent>
-                  <Icon style={styles.icon} name="more" />
-                </Button>
-            </View>
+        <Animated.View style={[styles.header, { transform: [{ translateY: headerTranslate }] }]}>
+          <View>
+            <Button
+              transparent
+              onPress={() => { navigation.goBack() }}
+            >
+              <Icon style={styles.icon} name="arrow-back" />
+            </Button>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <Button transparent>
+              <Icon style={styles.icon} name="share" />
+            </Button>
+            <Button transparent>
+              <Icon style={styles.icon} name="cart" />
+            </Button>
+            <Button transparent>
+              <Icon style={styles.icon} name="more" />
+            </Button>
+          </View>
         </Animated.View>
         <Content
           scrollEventThrottle={16}
           onScroll={Animated.event(
-              [
-                {
-                   nativeEvent: {contentOffset:{y:this.state.scrollY}}
-                }
-              ]
+            [
+              {
+                nativeEvent: { contentOffset: { y: this.state.scrollY } }
+              }
+            ]
           )}
         >
           <View>
@@ -101,17 +101,17 @@ class Home extends React.Component<Props, State> {
               autoplayTimeout={2}
               dotStyle={styles.swiperDot}
               activeDotStyle={styles.swiperActiveDot}
-              style={{height: 400}}
+              style={{ height: 400 }}
               paginationStyle={styles.swiperPagination}
             >
-              {images.map((image, i)=> {
-                return(
+              {images.map((image, i) => {
+                return (
                   <View
-                    style={{flex: .9, justifyContent: 'flex-start'}}
+                    style={{ flex: .9, justifyContent: 'flex-start' }}
                     key={i}
                   >
                     <Image
-                      source={{uri: 'http://192.168.0.111:4869/api/products/images/0632961e-2b6a-402f-9b19-e45a742c9f86asus-rog-strix-g531gv-15-6-inch-gaming-laptop.jpg'}}
+                      source={{ uri: 'http://192.168.0.111:4869/api/products/images/0632961e-2b6a-402f-9b19-e45a742c9f86asus-rog-strix-g531gv-15-6-inch-gaming-laptop.jpg' }}
                       style={{
                         flex: 1,
                         height: '100%',
@@ -149,7 +149,7 @@ class Home extends React.Component<Props, State> {
               <View style={styles.wrapInfo}>
                 <Text style={styles.text1}>Transaksi Berhasil</Text>
                 <Text style={styles.text2}>99,33%</Text>
-              </View>              
+              </View>
               <View style={styles.wrapInfo}>
                 <Text style={styles.text1}>Wishlisht</Text>
                 <Text style={styles.text2}>1193</Text>
@@ -166,7 +166,7 @@ class Home extends React.Component<Props, State> {
                     <Text style={styles.description}>Reza</Text>
                     <Text style={styles.description}>Raka</Text>
                   </View>
-                  ))
+                ))
               }
               <Text style={styles.description}></Text>
             </View>
@@ -186,13 +186,13 @@ class Home extends React.Component<Props, State> {
             <Button
               style={styles.buttonBuy} bordered
               onPress={() => navigation.navigate("Login")}
-              >
+            >
               <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
             </Button>
             <Button
-              style={styles.buttonCart} 
+              style={styles.buttonCart}
               onPress={() => navigation.navigate("Login")}
-              >
+            >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
             </Button>
           </View>

@@ -32,6 +32,7 @@ let strings = new LocalizedStrings({
         product_info: 'Info Produk',
         next: 'Selanjutnya',
         login_option: 'atau masuk dengan',
+        forgot_password: 'Lupa password ?',
         phone_or_email: 'Nomor Ponsel atau Email'
     },
     en: {
@@ -66,6 +67,7 @@ let strings = new LocalizedStrings({
         next: 'Next',
         login_option: 'or sign in with',
         phone_or_email: 'Phone Number or Email',
+        email: 'Enter valid email',
         password: 'Enter password'
     }
 });

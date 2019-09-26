@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
         <Label style={{ fontSize: 13, color: 'gray' }} >{label}</Label>
         <Input
           autoFocus
-          ref={c => (this.textInput = c)}
+          ref={(this.textInput)}
           {...input}
         />
       </Item>
@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
       this.props.navigation.navigate("Home");
     } else {
       Toast.show({
-        text: "Enter Valid Username & password gan!",
+        text: "Enter Valid Username & password",
         duration: 2000,
         position: "top",
         textStyle: { textAlign: "center" }
@@ -67,9 +67,9 @@ class LoginForm extends React.Component {
       <Form>
         <Field
           name="phone"
-          label={lang.phone_or_email}
+          label={lang.email}
           component={this.renderInput}
-          validate={[minLength8, required]}
+          validate={[email]}
         />
         <Field
           name="password"
