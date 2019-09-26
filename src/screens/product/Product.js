@@ -111,7 +111,7 @@ class Home extends React.Component<Props, State> {
                     key={i}
                   >
                     <Image
-                      source={{uri: image}}
+                      source={{uri: 'http://192.168.0.111:4869/api/products/images/0632961e-2b6a-402f-9b19-e45a742c9f86asus-rog-strix-g531gv-15-6-inch-gaming-laptop.jpg'}}
                       style={{
                         flex: 1,
                         height: '100%',
@@ -163,8 +163,8 @@ class Home extends React.Component<Props, State> {
               {
                 info.map(item => (
                   <View style={styles.infoList}>
-                    <Text style={styles.description}>{item.label}</Text>
-                    <Text style={styles.description}>{item.value}</Text>
+                    <Text style={styles.description}>Reza</Text>
+                    <Text style={styles.description}>Raka</Text>
                   </View>
                   ))
               }
