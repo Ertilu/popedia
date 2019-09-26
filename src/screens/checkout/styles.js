@@ -143,11 +143,17 @@ const styles = StyleSheet.create({
 		borderColor: 'green'
 	},
 	total: {
-		color: 'green',
-		fontSize: 10,
-		borderWidth: 1,
-		padding: 10,
-		borderColor: 'green'
+		marginLeft: 60,
+	},
+	checkoutFooter: {
+		fontSize:14,
+		color:'#fff',
+		backgroundColor:'#ff5722',
+		justifyContent:'center',
+		padding:10,
+		width:'100%',
+		borderRadius:3,
+		textAlign:'center'
 	}
 });
 export default styles;

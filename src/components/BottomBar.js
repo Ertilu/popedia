@@ -93,7 +93,7 @@ export default class BottomBar extends Component {
               <Text numberOfLines={1} style={styles.text}>Keranjang</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
             <View
               style={styles.button}
             >
