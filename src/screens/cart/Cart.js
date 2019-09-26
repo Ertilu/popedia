@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import {
 	Container,
 	Header,
@@ -46,7 +46,9 @@ export default class Cart extends Component {
 								<Text style={{fontSize:15, color:'#ff5722'}}>Rp 14.399.000</Text>
 							</Col>
 							<Col>
+							<TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>
 								<Text style={styles.checkoutFooter}>Checkout</Text>
+							</TouchableOpacity>
 							</Col>
 						</Row>
 					</Footer>

@@ -35,8 +35,11 @@ export default class CartContent extends Component {
 				<Card style={styles.cardFull}>
 					<CardItem>
 						<View style={{flexDirection:'row', flexWrap:'wrap'}}>
-							<Icon type='FontAwesome' name='ticket' style={{color:'#1CC625', fontSize:20}} />
-							<Text style={styles.promoText}>Gunakan Kode Promo atau Kupon</Text>
+							<Image  
+								source={{uri: 'https://ecs7.tokopedia.net/img/cart-checkout/promo-stacking/icon-promo-1.png'}}
+								style={styles.menuIcon}
+							/>
+							<Text style={styles.promoText}>Gunakan Promo Popedia</Text>
 						</View>
 					</CardItem>
 				</Card>
@@ -146,8 +149,8 @@ const styles = StyleSheet.create({
 	},
 	promoText: {
 		color:'#1CC625',
-		fontSize:13,
-		left:-5
+		fontSize:11,
+		left: 15
 	},
 	trashIcon: {
 		flex:0.2,
@@ -192,5 +195,9 @@ const styles = StyleSheet.create({
 		paddingLeft:15,
 		paddingRight:15,
 		flexDirection:'row'
-	}
+	},
+	menuIcon: {
+		height: 20,
+		width: 20
+	  },
 });

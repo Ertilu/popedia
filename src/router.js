@@ -15,7 +15,7 @@ import Sidebar from "./screens/sidebar";
 import Product from './screens/product';
 import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
-import Account from './screens/account/Account';
+import Checkout from './screens/checkout/Checkout';
 
 const AppNavigator = createStackNavigator(
   {
@@ -27,7 +27,7 @@ const AppNavigator = createStackNavigator(
     Product: { screen: Product },
     Maintenance: { screen: Maintenance },
     Cart: { screen: Cart },
-    Account: { screen: Account },
+    Checkout: { screen: Checkout },
   },
   {
     initialRouteName: "Home",
