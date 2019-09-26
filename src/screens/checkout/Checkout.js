@@ -33,21 +33,18 @@ export default class Maintenance extends Component {
                 </Card>
                 <Card style={styles.cardFull}>
 					<View style={styles.topInfo}>
-						<Text style={{flex:0.8}}>
-							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>MI.STORE</Text>
-						</Text>
-						<Icon type='FontAwesome' name='trash-o' style={styles.trashIcon} />
+                        <H3>Alamat Pengiriman</H3>
 					</View>
 					<CardItem>
 						<View style={{padding:10, flex:1}}>
-							<Text style={{fontSize:14}}>Xiaomi Mi Notebook Air 12.5"/Core M3-6y30/4gb/128gb ssd - Emas</Text>
-							<Text style={styles.productPrice}>Rp 8.499.000</Text>
+							<Text style={{fontSize:14}}>Rumah</Text>
+							<Text style={styles.productPrice}>Reza Raka Nugraha</Text>
 						</View>
 					</CardItem>
                 </Card>
                 <Card>
                     <CardItem header>
-                    <H3>Alamat Pengiriman</H3>
+                    
                     </CardItem>
                 <CardItem>
                 <Body>
