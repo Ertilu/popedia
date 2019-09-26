@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
     }
   }
    
-  render() {
+  render() {  
     const { lang } = this.props
 
     const form = (
