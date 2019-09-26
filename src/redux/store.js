@@ -3,12 +3,9 @@
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
-import storage from 'redux-persist/lib/storage'; // default: localStorage if web, AsyncStorage if react-native
-import { persistStore, persistReducer } from 'redux-persist';
 
 // import AsyncStorage from '@react-native-community/async-storage';
 
-import createReducer from './reducers';
 import createMiddlewares from './middlewares';
 
 
@@ -29,30 +26,20 @@ function configureStore(initialState = {}) {
       : compose;
   /* eslint-enable */
 
-  const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['settings', 'auth']
-  }
-
-  const persistedReducer = persistReducer(persistConfig, createReducer)
 
   const store = createStore(
-    persistedReducer,
     composeEnhancers(...enhancers),
   );
 
-  const persistor = persistStore(store);
 
   return {
-    store,
-    persistor
+    store
   };
 
 }
 
 // Create redux store with history
 const initialState = {};
-const { store, persistor } = configureStore(initialState);
+const { store } = configureStore(initialState);
 
-export { store, persistor }
+export { store }
