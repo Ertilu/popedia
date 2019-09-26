@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {  Container, Header, Content, Card, CardItem, Text, Body, Left, Right, Title, Button, Icon, H3 } from "native-base";
 import { View, Image, TouchableOpacity } from 'react-native'
 import styles from './styles';
+import Cart from '../cart/CartContent'
 
 export default class Maintenance extends Component {
   render() {
@@ -21,50 +22,47 @@ export default class Maintenance extends Component {
         </Header>     
         <Content style={styles.card}>
             <Card style={styles.cardFull}>
-                    <CardItem>
-                        <View style={{flexDirection:'row', flexWrap:'wrap'}}>
-                            <Image  
-                                source={{uri: 'https://ecs7.tokopedia.net/img/cart-checkout/promo-stacking/icon-promo-1.png'}}
-                                style={styles.menuIcon}
-                            />
-                            <Text style={styles.promoText}>Gunakan Promo Popedia</Text>
-                        </View>
-                    </CardItem>
-                </Card>
-                <Card style={styles.cardFull}>
-					<View style={styles.topInfo}>
-                        <H3>Alamat Pengiriman</H3>
-					</View>
-					<CardItem>
-						<View style={{padding:10, flex:1}}>
-							<Text style={{fontSize:14}}>Rumah</Text>
-							<Text style={{fontSize: 12}}>Reza Raka Nugraha</Text>
-                            <Text style={{fontSize: 10}}>Jl. Sukasari III No.47, RT.02/RW.01, Sukasari, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16142</Text>
-                            <Text style={{fontSize: 10}}>+6287789513824</Text>
-                            <View style={styles.alternativeLayoutButtonContainer}>
-                                <Button transparent >
-                                    <Text style={styles.leftAddress}>Success</Text>
-                                </Button>
-                                <Button transparent>
-                                    <Text style={styles.rightAddress}>Primary</Text>
-                                </Button>
-                            </View>
-						</View>
-					</CardItem>
-                </Card>
-                <Card>
-                    <CardItem header>
-                    </CardItem>
                 <CardItem>
-                <Body>
-                    <Text>
-                    //Your text here
-                    </Text>
-                </Body>
+                    <View style={{flexDirection:'row', flexWrap:'wrap'}}>
+                        <Image  
+                            source={{uri: 'https://ecs7.tokopedia.net/img/cart-checkout/promo-stacking/icon-promo-1.png'}}
+                            style={styles.menuIcon}
+                        />
+                        <Text style={styles.promoText}>Gunakan Promo Popedia</Text>
+                    </View>
                 </CardItem>
-                <CardItem footer>
-                <Text>GeekyAnts</Text>
+            </Card>
+            <Card style={styles.cardFull}>
+                <View style={styles.topInfo}>
+                    <H3>Alamat Pengiriman</H3>
+                </View>
+                <CardItem>
+                    <View style={{padding:10, flex:1}}>
+                        <Text style={{fontSize:14}}>Rumah</Text>
+                        <Text style={{fontSize: 12}}>Reza Raka Nugraha</Text>
+                        <Text style={{fontSize: 10}}>Jl. Sukasari III No.47, RT.02/RW.01, Sukasari, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16142</Text>
+                        <Text style={{fontSize: 10}}>+6287789513824</Text>
+                        <View style={styles.alternativeLayoutButtonContainer}>
+                            <Button transparent >
+                                <Text style={styles.leftAddress}>Kirim ke Banyak Alamat</Text>
+                            </Button>
+                            <Button transparent>
+                                <Text style={styles.rightAddress}>Ganti Alamat</Text>
+                            </Button>
+                        </View>
+                    </View>
                 </CardItem>
+            </Card>
+            <Cart />
+            <Card style={styles.cardFull}>
+                <View style={styles.topInfo}>
+                    <H3>Total Tagihan</H3>
+                    <View style={styles.alternativeLayoutButtonContainer}>
+                    <Button transparent>
+                        <Text style={styles.rightAddress}>Ganti Alamat</Text>
+                    </Button>
+                </View>
+                </View>
             </Card>
         </Content>
     </Container>
