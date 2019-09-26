@@ -58,26 +58,26 @@ export default class BottomBar extends Component {
       }
     ]
 
-    return(
-        <Footer>
-          <View style={styles.wrapper} >
+    return (
+      <Footer>
+        <View style={styles.wrapper} >
           {
             navs.map(item =>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}> 
-            <View
-              style={styles.button}
-              >
-              <Image
-                source={{uri: item.image}}
-                style={styles.menuIcon}
-              />
-                <Text numberOfLines={1} style={styles.text}>{item.text}</Text>
-            </View>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <View
+                  style={styles.button}
+                >
+                  <Image
+                    source={{ uri: item.image }}
+                    style={styles.menuIcon}
+                  />
+                  <Text numberOfLines={1} style={styles.text}>{item.text}</Text>
+                </View>
+              </TouchableOpacity>
             )
           }
-          </View>
-        </Footer>
+        </View>
+      </Footer>
     )
   }
 }

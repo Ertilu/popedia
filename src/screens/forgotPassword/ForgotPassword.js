@@ -16,12 +16,42 @@ import {
     Item,
     Label,
     Input,
-    Form
+    Form,
+    Toast
 } from "native-base";
 import styles from './styles'
 
 class ForgotPassword extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            name: '',
+            nameValidate: true,
+            email: '',
+        }
+    }
+
+    onChangeHandler(text) {
+        this.setState({ email: text })
+    }
+
+    validate() {
+        const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        if (mail.test(this.state.email)) {
+            this.props.navigation.navigate("Login")
+        } else {
+            Toast.show({
+                text: "Invalid email",
+                duration: 2000,
+                position: "top",
+                textStyle: { textAlign: "center" }
+            });
+        }
+    }
+
     render() {
+        const { lang, navigation } = this.props
         return (
             <Container>
                 <Header androidStatusBarColor={'#2aaa4d'} style={styles.header}>
@@ -31,7 +61,6 @@ class ForgotPassword extends React.Component {
                         </Button>
                     </Left>
                     <Body>
-                        {/* <Title style={styles.textHeader}>{lang.register}</Title> */}
                         <Title style={styles.textHeader}>Forgot Password</Title>
                     </Body>
                 </Header>
@@ -39,13 +68,13 @@ class ForgotPassword extends React.Component {
                     <Form >
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>Masukkan email</Label>
-                            <Input />
+                            <Input onChangeText={(text) => this.onChangeHandler(text)} />
                         </Item>
                     </Form>
 
 
                     <View style={{ marginTop: 20 }} padder>
-                        <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => navigation.navigate("Login")}>
+                        <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.validate()}>
                             {/* <Text style={{ fontWeight: "600" }} uppercase={false} bold>{lang.next}</Text> */}
                             <Text style={{ fontWeight: "600" }} uppercase={false} bold>Kirim</Text>
                         </Button>

@@ -19,9 +19,9 @@ import {
     Form,
     Toast
 } from "native-base";
-import styles from './styles'
+import styles from './style'
 
-class Otp extends React.Component {
+class AddProduct extends React.Component {
 
     constructor() {
         super()
@@ -43,7 +43,7 @@ class Otp extends React.Component {
             this.props.navigation.navigate("Home")
         } else {
             Toast.show({
-                text: "Invalid code",
+                text: "Isi dengan benar",
                 duration: 2000,
                 position: "top",
                 textStyle: { textAlign: "center" }
@@ -62,13 +62,33 @@ class Otp extends React.Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={styles.textHeader}>Verifikasi Kode</Title>
+                        <Title style={styles.textHeader}>Tambah produk</Title>
                     </Body>
                 </Header>
                 <Content style={styles.content}>
                     <Form >
                         <Item floatingLabel>
-                            <Label style={styles.registerForm}>Masukkan kode</Label>
+                            <Label style={styles.registerForm}>nama</Label>
+                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={styles.registerForm}>gambar</Label>
+                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={styles.registerForm}>kategori</Label>
+                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={styles.registerForm}>kuantitas</Label>
+                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={styles.registerForm}>deskripsi</Label>
+                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label style={styles.registerForm}>price</Label>
                             <Input onChangeText={(number) => this.onChangeHandler(number)} />
                         </Item>
                     </Form>
@@ -78,7 +98,7 @@ class Otp extends React.Component {
                         <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.validate()}>
                             <Text style={{ fontWeight: "600" }} uppercase={false} bold>Kirim</Text>
                         </Button>
-                        <Text style={styles.loginOption}>Kode harus 6 digit</Text>
+                        <Text style={styles.loginOption}>Isi produk dengan benar</Text>
                     </View>
 
                 </Content>
@@ -87,4 +107,4 @@ class Otp extends React.Component {
     }
 }
 
-export default Otp;
+export default AddProduct;

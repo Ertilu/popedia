@@ -9,6 +9,9 @@ import Login from "./screens/login";
 import Register from "./screens/register/Register";
 import Otp from "./screens/otp/Otp";
 import ForgotPassword from "./screens/forgotPassword/ForgotPassword";
+import Profile from "./screens/profile/Profile";
+import AddProduct from "./screens/addProduct/AddProduct";
+import MyProduct from "./screens/myProduct/MyProduct";
 import Home from "./screens/home";
 import Sidebar from "./screens/sidebar";
 import Product from './screens/product';
@@ -19,6 +22,9 @@ const AppNavigator = createStackNavigator(
     Register: { screen: Register },
     Otp: { screen: Otp },
     ForgotPassword: { screen: ForgotPassword },
+    Profile: { screen: Profile },
+    AddProduct: { screen: AddProduct },
+    MyProduct: { screen: MyProduct },
     Home: { screen: Home },
     Product: { screen: Product }
   },

@@ -31,7 +31,7 @@ class Login extends React.Component {
             <Title style={styles.textHeader}>{lang.login}</Title>
           </Body>
           <Right>
-            <Button onPress={() => navigation.navigate("Register")} transparent>
+            <Button onPress={() => navigation.navigate("Profile")} transparent>
               <Text style={{ color: '#2aaa4d' }} uppercase={false}>{lang.signup}</Text>
             </Button>
           </Right>
@@ -50,7 +50,7 @@ class Login extends React.Component {
               <Icon style={styles.iconMedia} type="FontAwesome" name='google' />
               <Text uppercase={false} style={styles.textMedia}>Google</Text>
             </Button>
-            <Button style={styles.buttonOption} full bordered>
+            <Button style={styles.buttonOption} f ull bordered>
               <Icon style={styles.iconMedia} type="FontAwesome" name='facebook' />
               <Text uppercase={false} style={styles.textMedia}>Facebook</Text>
             </Button>

@@ -40,8 +40,9 @@ class LoginForm extends React.Component {
         <Label style={{ fontSize: 13, color: 'gray' }} >{label}</Label>
         <Input
           autoFocus
-          ref={(this.textInput)}
+          ref={e => { (this.textInput) = 2 }}
           {...input}
+
         />
       </Item>
     );
