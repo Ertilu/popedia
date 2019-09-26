@@ -16,36 +16,40 @@ import {
   Item,
   Label,
   Input,
-  Form
+  Form,
+  Toast
 } from "native-base";
 import styles from './styles'
 
-const required = value => (value ? undefined : "Required");
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined;
-const maxLength15 = maxLength(15);
-const minLength = min => value =>
-  value && value.length < min ? `Must be ${min} characters or more` : undefined;
-const minLength8 = minLength(8);
-const email = value =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? "Invalid email address"
-    : undefined;
-
 class Register extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      name: '',
+      nameValidate: true,
+      email: '',
+    }
+  }
 
-  register() {
-    if (this.props.valid) {
-      this.props.navigation.navigate("Register");
+  onChangeHandler(text) {
+    this.setState({ email: text })
+  }
+
+  validate() {
+    const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (mail.test(this.state.email)) {
+      this.props.navigation.navigate("Otp")
     } else {
       Toast.show({
-        text: "Username, email, password doesn't wekwew",
+        text: "Nama, email & password harus benar",
         duration: 2000,
         position: "top",
         textStyle: { textAlign: "center" }
       });
     }
   }
+
 
   render() {
     const { lang, navigation } = this.props
@@ -58,12 +62,10 @@ class Register extends React.Component {
             </Button>
           </Left>
           <Body>
-            {/* <Title style={styles.textHeader}>{lang.register}</Title> */}
             <Title style={styles.textHeader}>Daftar</Title>
           </Body>
           <Right>
             <Button onPress={() => navigation.navigate("Login")} transparent>
-              {/* <Text style={{ color: '#2aaa4d' }} uppercase={false}>{lang.signin}</Text> */}
               <Text style={{ color: '#2aaa4d' }} uppercase={false}>Masuk</Text>
             </Button>
           </Right>
@@ -74,28 +76,24 @@ class Register extends React.Component {
           <Form >
             <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>name</Label>
-              <Input validate={[email]} />
+              <Input />
             </Item>
             <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>email</Label>
-              <Input />
+              <Input onChangeText={(text) => this.onChangeHandler(text)} />
             </Item>
-            <Item floatingLabel>
+            <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>password</Label>
-              <Input />
+              <Input secureTextEntry={true} />
             </Item>
           </Form>
 
-
           <View style={{ marginTop: 20 }} padder>
-            <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => navigation.navigate("Otp")}>
-              {/* <Text style={{ fontWeight: "600" }} uppercase={false} bold>{lang.next}</Text> */}
+            <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.validate()}>
               <Text style={{ fontWeight: "600" }} uppercase={false} bold>Daftar</Text>
             </Button>
 
-            {/* <Text style={styles.loginOption}>{lang.login_option}</Text> */}
             <Text style={styles.loginOption}>Atau daftar dengan</Text>
-
             <Button style={styles.buttonOption} full bordered>
               <Icon style={styles.iconMedia} type="FontAwesome" name='google' />
               <Text uppercase={false} style={styles.textMedia}>Google</Text>
@@ -109,7 +107,6 @@ class Register extends React.Component {
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              {/* <Text style={styles.loginOption}>{lang.not_have_account} {lang.signup}</Text> */}
               <Text style={styles.loginOption}>sudah punya akun tokopedia? <Text style={{ color: '#2aaa4d', fontSize: 13 }}>Masuk</Text> </Text>
 
             </TouchableOpacity>
