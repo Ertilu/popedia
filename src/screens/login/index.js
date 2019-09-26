@@ -68,13 +68,13 @@ class LoginForm extends React.Component {
       <Form>
         <Field
           name="phone"
-          label={lang.email}
+          label='email'
           component={this.renderInput}
           validate={[email]}
         />
         <Field
           name="password"
-          label={lang.password}
+          label='password'
           component={this.renderInput}
           validate={[minLength8, required]}
         />
