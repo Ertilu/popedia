@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleProvider } from "native-base";
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react'
 import Router from "./router";
-import { store, persistor } from './redux/store';
+import { store } from './redux/store';
 import stringLanguages from './utils/stringLanguages';
 
 export default class App extends Component {
@@ -14,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-          <Router />
+        <Router />
       </Provider>
 
     );

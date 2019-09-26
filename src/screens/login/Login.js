@@ -28,23 +28,23 @@ class Login extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.textHeader}>{lang.login}</Title>
+            <Title style={styles.textHeader}>Masuk</Title>
           </Body>
           <Right>
             <Button onPress={() => navigation.navigate("Profile")} transparent>
-              <Text style={{ color: '#2aaa4d' }} uppercase={false}>{lang.signup}</Text>
+              <Text style={{ color: '#2aaa4d' }} uppercase={false}>Daftar</Text>
             </Button>
           </Right>
         </Header>
         <Content style={styles.content}>
           {this.props.loginForm}
-          <Text style={styles.forgotPassword} onPress={() => navigation.navigate("ForgotPassword")}>{lang.forgot_password}</Text>
+          <Text style={styles.forgotPassword} onPress={() => navigation.navigate("ForgotPassword")}>Lupa password ?</Text>
           <View style={{ marginTop: 20 }} padder>
             <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.props.onLogin()}>
-              <Text style={{ fontWeight: "600" }} uppercase={false} bold>{lang.next}</Text>
+              <Text style={{ fontWeight: "600" }} uppercase={false} bold>Selanjutnya</Text>
             </Button>
 
-            <Text style={styles.loginOption}>{lang.login_option}</Text>
+            <Text style={styles.loginOption}>atau masuk dengan</Text>
 
             <Button style={styles.buttonOption} full bordered>
               <Icon style={styles.iconMedia} type="FontAwesome" name='google' />
@@ -59,7 +59,7 @@ class Login extends React.Component {
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.loginOption}>{lang.not_have_account} <Text style={{ color: '#2aaa4d', fontSize: 13 }}> {lang.signup}</Text></Text>
+              <Text style={styles.loginOption}>Tidak punya akun Tokopedia ? <Text style={{ color: '#2aaa4d', fontSize: 13 }}> Daftar</Text></Text>
             </TouchableOpacity>
           </View>
 
