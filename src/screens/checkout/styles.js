@@ -141,6 +141,13 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		padding: 10,
 		borderColor: 'green'
+	},
+	total: {
+		color: 'green',
+		fontSize: 10,
+		borderWidth: 1,
+		padding: 10,
+		borderColor: 'green'
 	}
 });
 export default styles;

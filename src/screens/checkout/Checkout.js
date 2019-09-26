@@ -59,7 +59,7 @@ export default class Maintenance extends Component {
                     <H3>Total Tagihan</H3>
                     <View style={styles.alternativeLayoutButtonContainer}>
                     <Button transparent>
-                        <Text style={styles.rightAddress}>Ganti Alamat</Text>
+                        <Text style={styles.total}>Ganti Alamat</Text>
                     </Button>
                 </View>
                 </View>
