@@ -8,4 +8,4 @@ middlewares.push(promiseMiddleware);
 // const logger = createLogger();
 // middlewares.push(logger); 
 
-export default middlewares
+export default middlewares 
