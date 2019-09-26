@@ -6,6 +6,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import storage from 'redux-persist/lib/storage'; // default: localStorage if web, AsyncStorage if react-native
 import { persistStore, persistReducer } from 'redux-persist';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 import createReducer from './reducers';
 import createMiddlewares from './middlewares';
 
@@ -29,7 +31,7 @@ function configureStore(initialState = {}) {
 
   const persistConfig = {
     key: 'root',
-    storage,
+    storage: AsyncStorage,
     whitelist: ['settings', 'auth']
   }
 

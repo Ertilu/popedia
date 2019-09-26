@@ -2,6 +2,7 @@
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
+
 import { Root } from "native-base";
 
 import { Easing, Animated } from 'react-native';
@@ -12,6 +13,9 @@ import ForgotPassword from "./screens/forgotPassword/ForgotPassword";
 import Home from "./screens/home";
 import Sidebar from "./screens/sidebar";
 import Product from './screens/product';
+import Maintenance from './screens/maintenance/404';
+import Cart from './screens/cart/Cart';
+import Account from './screens/account/Account';
 
 const AppNavigator = createStackNavigator(
   {
@@ -20,7 +24,10 @@ const AppNavigator = createStackNavigator(
     Otp: { screen: Otp },
     ForgotPassword: { screen: ForgotPassword },
     Home: { screen: Home },
-    Product: { screen: Product }
+    Product: { screen: Product },
+    Maintenance: { screen: Maintenance },
+    Cart: { screen: Cart },
+    Account: { screen: Account },
   },
   {
     initialRouteName: "Home",
