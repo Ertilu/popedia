@@ -21,7 +21,7 @@ class Product extends Component {
   async componentDidMount() {
     await axios
       .get(
-        `http://192.168.0.111:4869/api/products`
+        `http://192.168.0.116:4869/api/products`
       )
       .then(res =>
         this.setState({
@@ -30,27 +30,10 @@ class Product extends Component {
       );
     console.log(this.state);
   }
-  renderItem = ({ item }) => (
-    <Button
-      transparent
-      style={styles.listMenu}
-      onPress={()=> { this.props.navigation.navigate('Product', { item } ); }}
-    >
-      <Image
-        source={{uri: item.image}}
-        style={styles.menuIcon}
-      />
-      <View style={styles.menuText}>
-        <Text numberOfLines={2} style={styles.name}>
-          {item.name}
-        </Text>
-        <Text numberOfLines={1} style={styles.price}>
-          {item.price}
-        </Text>
-      </View>
-    </Button>
-)
+
+
   render() {
+    
     return (
       <View style={styles.listWrapper}>
         <FlatList
@@ -61,18 +44,18 @@ class Product extends Component {
             style={styles.listMenu}
             onPress={()=> { this.props.navigation.navigate('Product', { item } ); }}
           >
-          <Image
-          source={{uri: 'http://192.168.0.111:4869/api/products/images/0632961e-2b6a-402f-9b19-e45a742c9f86asus-rog-strix-g531gv-15-6-inch-gaming-laptop.jpg'}}
-          style={styles.menuIcon}
-          />
-          <View style={styles.menuText}>
-            <Text numberOfLines={2} style={styles.name}>
-              {item.name}
-            </Text>
-            <Text numberOfLines={1} style={styles.price}>
-              {item.price}
-            </Text>
-          </View>
+            <Image
+            source={{uri: 'http://192.168.0.116:4869'+item.image}}
+            style={styles.menuIcon}
+            />
+            <View style={styles.menuText}>
+              <Text numberOfLines={2} style={styles.name}>
+                {item.name}
+              </Text>
+              <Text numberOfLines={1} style={styles.price}>
+                Rp {item.price}
+              </Text>
+            </View>
           </Button>
           }
           keyExtractor={({id}) => id}

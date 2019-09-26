@@ -28,6 +28,7 @@ import Slider from "../../components/Slider";
 import Menu from "../../components/Menu";
 import HomeCategory from "../../components/HomeCategory";
 import ProductList from "../../components/ProductList";
+import Maintenance from "../maintenance/404";
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 200
@@ -59,7 +60,7 @@ class Home extends Component {
   }
 
   getCategories() {
-    const queryView = `http://192.168.0.111:4869/api/categories`
+    const queryView = `http://192.168.0.116:4869/api/categories`
     axios 
     // .get("https://randomproduct.me/api/?results=5")
     .get(queryView)
@@ -112,7 +113,7 @@ class Home extends Component {
           onScroll={this.handleScroll.bind(this)}
         >
           <View style={styles.circle}>
-
+            <View><Text>RAKA</Text></View>
           </View>
           <Slider />
           <ScrollView

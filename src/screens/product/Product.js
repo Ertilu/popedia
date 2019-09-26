@@ -13,6 +13,7 @@ import {
   ListItem,
   Footer,
   Header,
+  Item,
 } from "native-base";
 
 import {
@@ -59,7 +60,13 @@ class Home extends React.Component {
     const item = navigation.getParam('item', {});
 
     const images = item ? [item.image] : [];
-    const info = item.info || [];
+    const info =  [
+      { label: 'Berat', value: '300 gram' },
+      { label: 'Kondisi', value: 'New' },
+      { label: 'Asuransi', value: 'Opsional' },
+      { label: 'Pemesanan Min', value: '1 Buah' },
+      { label: 'Kategori', value: item.category_id.name },
+    ] || [];
     const description = item.description ? item.description.replace(/↵/gi, '\n') : '';
 
     return (
@@ -111,7 +118,7 @@ class Home extends React.Component {
                     key={i}
                   >
                     <Image
-                      source={{ uri: 'http://192.168.0.111:4869/api/products/images/0632961e-2b6a-402f-9b19-e45a742c9f86asus-rog-strix-g531gv-15-6-inch-gaming-laptop.jpg' }}
+                      source={{ uri: 'http://192.168.0.116:4869'+item.image }}
                       style={{
                         flex: 1,
                         height: '100%',
@@ -129,17 +136,17 @@ class Home extends React.Component {
               <Text style={styles.name}>{item.name}</Text>
             </View>
             <View>
-              <Text style={styles.price}>{item.price}</Text>
+              <Text style={styles.price}>Rp {item.price}</Text>
             </View>
 
             <View>
-              <Text style={{ fontSize: 11, color: 'gray' }}>Produk dari</Text>
+              <Text style={{ fontSize: 11, color: 'gray' }}>Produk dari Popedia</Text>
             </View>
             <View
               style={styles.horizontalLine}
             />
             <View>
-              <Text style={{ fontSize: 11, fontWeight: "600", color: 'gray' }}>Stock terbatas!</Text>
+              <Text style={{ fontSize: 11, fontWeight: "800", color: 'black' }}>Stock terbatas! <Text style={{ fontSize: 11, }}>Tersedia >50</Text></Text>
             </View>
             <View style={styles.wrapper}>
               <View style={styles.wrapInfo}>
@@ -163,8 +170,8 @@ class Home extends React.Component {
               {
                 info.map(item => (
                   <View style={styles.infoList}>
-                    <Text style={styles.description}>Reza</Text>
-                    <Text style={styles.description}>Raka</Text>
+                    <Text style={styles.description}>{item.label}</Text>
+                    <Text style={styles.description}>{item.value}</Text>
                   </View>
                 ))
               }
