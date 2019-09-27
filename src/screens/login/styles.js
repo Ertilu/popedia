@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 	},
 	loginOption: {
 		textAlign: 'center',
-		color: 'gray',
+		color: '#2aaa4d',
 		fontSize: 13,
 		marginTop: 15,
 		marginBottom: 15

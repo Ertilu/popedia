@@ -2,12 +2,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import Product from "./Product";
+import { addToCart } from '../../redux/actions/cartActions';
+import { fetchProducts } from '../../redux/actions/productAction';
 
-function bindAction(dispatch) {
-  return {
-    
-  };
-}
+
 
 const mapStateToProps = state => ({
   lang: state.lang

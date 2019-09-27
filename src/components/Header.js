@@ -56,13 +56,13 @@ const HeaderComponent = (props) => {
           <Input placeholderTextColor='#B3BAC3' style={{ fontSize: 16 }} placeholder="Cari di Popedia" />
         </Animated.View>
         <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity onPress={() => navigation.navigate("404")}>
             <Icon style={[styles.button, { color }]} name='heart' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity onPress={() => navigation.navigate("404")}>
             <Icon style={[styles.button, { color }]} name='mail' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity onPress={() => navigation.navigate("404")}>
             <Icon style={[styles.button, { color }]} name='notifications' />
           </TouchableOpacity>
         </View>
