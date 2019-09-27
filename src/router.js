@@ -6,7 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { Root } from "native-base";
 
 import { Easing, Animated } from 'react-native';
-import Login from "./screens/login";
+import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import Otp from "./screens/otp/Otp";
 import ForgotPassword from "./screens/forgotPassword/ForgotPassword";

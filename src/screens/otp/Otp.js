@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Platform, TouchableOpacity, TextInput } from "react-native";
+import { Image, Platform, TouchableOpacity, AsyncStorage, TextInput } from "react-native";
 import {
     Container,
     Content,
@@ -21,6 +21,10 @@ import {
 } from "native-base";
 import styles from './styles'
 
+import axios from 'axios'
+
+import { NavigationEvents } from 'react-navigation'
+
 class Otp extends React.Component {
 
     constructor() {
@@ -29,21 +33,56 @@ class Otp extends React.Component {
             num: '',
             numValidate: true,
             code: '',
+            email: ''
         }
     }
 
     onChangeHandler(number) {
-        this.setState({ code: number })
+        this.setState({ num: number })
     }
+
+    resend = () => {
+        axios.post('http://192.168.0.116:4869/api/users/resend', { email: this.state.email })
+            .then(() => {
+                Toast.show({
+                    text: "New Code Has Been Send",
+                    duration: 2000,
+                    position: "top",
+                    textStyle: { textAlign: "center" }
+                });
+            })
+    }
+
+    getEmail() {
+        this.setState({ email: this.props.navigation.getParam('email') })
+        alert(this.props.navigation.getParam('email'))
+    }
+
+
+
 
     validate() {
         const numReg = /^\d{6}$/
+        alert(this.state.num)
+        if (numReg.test(this.state.num)) {
+            axios.post('http://192.168.0.116:4869/api/users/verify', { otp: this.state.num, email: this.state.email })
+                .then(res => {
+                    AsyncStorage.setItem('name', res.data.user.name)
+                    this.props.navigation.navigate("Home")
+                })
+                .catch(err => {
+                    Toast.show({
+                        text: JSON.stringify(err),
+                        duration: 2000,
+                        position: "top",
+                        textStyle: { textAlign: "center" }
+                    });
+                })
 
-        if (numReg.test(this.state.code)) {
-            this.props.navigation.navigate("Home")
+
         } else {
             Toast.show({
-                text: "Invalid code",
+                text: "Invalid code format",
                 duration: 2000,
                 position: "top",
                 textStyle: { textAlign: "center" }
@@ -55,6 +94,9 @@ class Otp extends React.Component {
         const { navigation } = this.props
         return (
             <Container>
+                <NavigationEvents
+                    onDidFocus={() => this.getEmail()}
+                />
                 <Header androidStatusBarColor={'#2aaa4d'} style={styles.header}>
                     <Left>
                         <Button onPress={() => navigation.goBack()} transparent>
@@ -79,6 +121,10 @@ class Otp extends React.Component {
                             <Text style={{ fontWeight: "600" }} uppercase={false} bold>Kirim</Text>
                         </Button>
                         <Text style={styles.loginOption}>Kode harus 6 digit</Text>
+
+                        <TouchableOpacity onPress={() => this.resend()}>
+                            <Text style={{ fontSize: 15, color: 'lightgreen' }}>Resend Code</Text>
+                        </TouchableOpacity>
                     </View>
 
                 </Content>

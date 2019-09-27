@@ -21,6 +21,8 @@ import {
 } from "native-base";
 import styles from './styles'
 
+import axios from 'axios'
+
 class Register extends React.Component {
   constructor() {
     super()
@@ -28,18 +30,31 @@ class Register extends React.Component {
       name: '',
       nameValidate: true,
       email: '',
+      password: '',
     }
   }
 
-  onChangeHandler(text) {
-    this.setState({ email: text })
+  onChangeHandler(text, key) {
+    this.setState({ [key]: text })
   }
 
   validate() {
     const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     if (mail.test(this.state.email)) {
-      this.props.navigation.navigate("Otp")
+      axios.post('http://192.168.0.116:4869/api/users/register', { name: this.state.name, email: this.state.email, password: this.state.password })
+        .then(res => {
+          this.props.navigation.navigate("Otp", { otp: res.data.otp, email: this.set.state.email })
+        })
+        .catch(err => {
+          Toast.show({
+            text: err.response.data.message,
+            duration: 2000,
+            position: 'top',
+            textStyle: { textAlign: "center" }
+          })
+
+        })
     } else {
       Toast.show({
         text: "Nama, email & password harus benar",
@@ -76,15 +91,15 @@ class Register extends React.Component {
           <Form >
             <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>name</Label>
-              <Input />
+              <Input onChangeText={(text) => this.onChangeHandler(text, 'name')} />
             </Item>
             <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>email</Label>
-              <Input onChangeText={(text) => this.onChangeHandler(text)} />
+              <Input onChangeText={(text) => this.onChangeHandler(text, 'email')} />
             </Item>
             <Item floatingLabel style={styles.itemRegister}>
               <Label style={styles.registerForm}>password</Label>
-              <Input secureTextEntry={true} />
+              <Input secureTextEntry={true} onChangeText={(text) => this.onChangeHandler(text, 'password')} />
             </Item>
           </Form>
 

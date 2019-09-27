@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, AsyncStorage } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Title } from 'native-base';
+import { NavigationEvents } from 'react-navigation'
 
 import styles from './style'
 
 export default class CardImageExample extends Component {
+    state = {
+        name: 'Account'
+    }
+
+    getName = () => {
+        AsyncStorage.getItem('name')
+            .then(value => {
+                this.setState({ name: value })
+                alert(value)
+            })
+    }
+
+    exit = () => {
+        AsyncStorage.clear()
+        this.props.navigation.navigate("Login")
+    }
 
     render() {
         const { navigation } = this.props
         return (
             <Container>
+                <NavigationEvents
+                    onDidFocus={() => this.getName()}
+                />
                 <Header style={{ backgroundColor: 'white' }}>
                     <Left>
                         <Button onPress={() => navigation.navigate("Home")} transparent>
@@ -19,7 +39,7 @@ export default class CardImageExample extends Component {
                     </Left>
                     <Right>
                         <Body>
-                            <Title style={{ color: 'gray', fontWeight: "400" }}>                         Akun anda</Title>
+                            <Title style={{ color: 'gray', fontWeight: "400" }} onPress={() => this.exit()}>                         Keluar</Title>
                         </Body>
                     </Right>
                 </Header>
@@ -29,7 +49,7 @@ export default class CardImageExample extends Component {
                             <Left>
                                 <Thumbnail source={{ uri: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/1/9/20723472/20723472_a42a010b-bd35-4279-8bea-84e7bb1bcfc0.png.webp' }} />
                                 <Body>
-                                    <Text>Account</Text>
+                                    <Text>{this.state.name}</Text>
                                     <Text note>Verify</Text>
                                 </Body>
                             </Left>

@@ -37,7 +37,7 @@ class AddProduct extends React.Component {
     }
 
     validate() {
-        const numReg = /^\d{6}$/
+        const numReg = /^[a-zA-Z]$/
 
         if (numReg.test(this.state.code)) {
             this.props.navigation.navigate("Home")
