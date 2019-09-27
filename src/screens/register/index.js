@@ -4,6 +4,8 @@ import { Item, Input, Icon, Toast, Form, Label } from "native-base";
 import { Field, reduxForm } from "redux-form";
 import Register from "./Register";
 import { connect } from 'react-redux';
+import { registerUser } from '../../redux/actions/userActions';
+
 
 const required = value => (value ? undefined : "Required");
 const maxLength = max => value =>
@@ -24,8 +26,6 @@ const alphaNumeric = value =>
 
 
 class RegisterForm extends React.Component {
-
-
     renderInput({ input, label, type, meta: { touched, error, warning } }) {
         return (
             <Item
@@ -49,6 +49,9 @@ class RegisterForm extends React.Component {
 
     register() {
         if (this.props.valid) {
+            const data = { name, username, email, password }
+            await props.registerUser(data);
+            alert('Congratulation you accoun has been created');
             this.props.navigation.navigate("Login");
         } else {
             Toast.show({

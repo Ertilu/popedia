@@ -192,13 +192,13 @@ class Home extends React.Component {
             </Button>
             <Button
               style={styles.buttonBuy} bordered
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("Cart")}
             >
               <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
             </Button>
             <Button
               style={styles.buttonCart}
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("Cart")}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
             </Button>

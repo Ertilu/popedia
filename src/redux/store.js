@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 // import AsyncStorage from '@react-native-community/async-storage';
 
-import createReducer from './reducers';
+import rootReducer from './reducers';
 import createMiddlewares from './middlewares';
 
 function configureStore(initialState = {}) {
