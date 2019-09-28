@@ -47,12 +47,6 @@ export default class BottomBar extends Component {
       },
     ]
 
-    // , {
-    //   icon: "md-person",
-    //   text: 'Akun',
-    //   image: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/1/9/20723472/20723472_a42a010b-bd35-4279-8bea-84e7bb1bcfc0.png.webp'
-    // }
-
     return (
       <Footer>
         <View style={styles.wrapper} >

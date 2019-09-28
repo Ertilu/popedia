@@ -14,7 +14,7 @@ export default class CardImageExample extends Component {
         AsyncStorage.getItem('name')
             .then(value => {
                 this.setState({ name: value })
-                alert(value)
+                console.log(value)
             })
     }
 

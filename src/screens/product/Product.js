@@ -24,7 +24,6 @@ import {
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
-
 import styles from "./styles";
 import BottomBar from "../../components/BottomBar";
 

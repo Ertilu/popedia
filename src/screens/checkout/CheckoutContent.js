@@ -33,18 +33,6 @@ export default class CartContent extends Component {
 		return (
 			<Content>
 				<Card style={styles.cardFull}>
-					<CardItem>
-						<View style={{flexDirection:'row', flexWrap:'wrap'}}>
-							<Image  
-								source={{uri: 'https://ecs7.tokopedia.net/img/cart-checkout/promo-stacking/icon-promo-1.png'}}
-								style={styles.menuIcon}
-							/>
-							<Text style={styles.promoText}>Gunakan Promo Popedia</Text>
-						</View>
-					</CardItem>
-				</Card>
-
-				<Card style={styles.cardFull}>
 					<View style={styles.topInfo}>
 						<Text style={{flex:0.8}}>
 							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>SINAR21</Text>

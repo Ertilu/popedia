@@ -122,7 +122,7 @@ class Register extends React.Component {
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.loginOption}>sudah punya akun tokopedia? <Text style={{ color: '#2aaa4d', fontSize: 13 }}>Masuk</Text> </Text>
+              <Text style={styles.loginOption}>sudah punya akun Popedia? <Text style={{ color: '#2aaa4d', fontSize: 13 }}>Masuk</Text> </Text>
 
             </TouchableOpacity>
           </View>

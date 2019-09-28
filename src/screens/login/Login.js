@@ -43,7 +43,6 @@ class Login extends React.Component {
     if (mail.test(this.state.email)) {
       axios.post('http://192.168.0.116:4869/api/users/login', { email: this.state.email, password: this.state.password })
         .then(res => {
-          alert(res.data.user.name)
           AsyncStorage.setItem('name', res.data.user.name)
           this.props.navigation.navigate("Home")
         })
@@ -141,7 +140,7 @@ class Login extends React.Component {
               <Text uppercase={false} style={styles.textMedia}>Yahoo</Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.loginOption}>belum punya akun tokopedia? <Text style={{ color: '#2aaa4d', fontSize: 13 }}>Daftar</Text> </Text>
+              <Text style={styles.loginOption}>belum punya akun Popedia? <Text style={{ color: '#2aaa4d', fontSize: 13 }}>Daftar</Text> </Text>
 
             </TouchableOpacity>
           </View>

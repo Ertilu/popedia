@@ -29,6 +29,9 @@ import Menu from "../../components/Menu";
 import HomeCategory from "../../components/HomeCategory";
 import ProductList from "../../components/ProductList";
 import Maintenance from "../maintenance/404";
+import { BASE_URL } from "../../router";
+
+
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 200
@@ -60,7 +63,7 @@ class Home extends Component {
   }
 
   getCategories() {
-    const queryView = `http://192.168.0.116:4869/api/categories`
+    const queryView = `${BASE_URL}/api/categories`
     axios 
     // .get("https://randomproduct.me/api/?results=5")
     .get(queryView)

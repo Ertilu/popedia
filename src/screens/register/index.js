@@ -4,8 +4,6 @@ import { Item, Input, Icon, Toast, Form, Label } from "native-base";
 import { Field, reduxForm } from "redux-form";
 import Register from "./Register";
 import { connect } from 'react-redux';
-import { registerUser } from '../../redux/actions/userActions';
-
 
 const required = value => (value ? undefined : "Required");
 const maxLength = max => value =>
