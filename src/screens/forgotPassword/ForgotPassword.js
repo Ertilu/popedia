@@ -20,6 +20,7 @@ import {
     Toast
 } from "native-base";
 import styles from './styles'
+import axios from 'axios'
 
 class ForgotPassword extends React.Component {
     constructor() {
@@ -31,15 +32,27 @@ class ForgotPassword extends React.Component {
         }
     }
 
-    onChangeHandler(text) {
-        this.setState({ email: text })
+    onChangeHandler(text, key) {
+        this.setState({ [key]: text })
     }
 
     validate() {
         const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
         if (mail.test(this.state.email)) {
-            this.props.navigation.navigate("Login")
+            axios.post('http://192.168.0.116:4869/api/users/forgot', { email: this.state.email })
+                .then(res => {
+                    this.props.navigation.navigate("Login")
+                })
+                .catch(err => {
+                    Toast.show({
+                        text: err.response.data.message,
+                        duration: 2000,
+                        position: 'top',
+                        textStyle: { textAlign: "center" }
+                    })
+                })
+            setTimeout(() => this.props.navigation.navigate("Login", { email: this.state.email }), 2500)
         } else {
             Toast.show({
                 text: "Invalid email",
@@ -68,7 +81,7 @@ class ForgotPassword extends React.Component {
                     <Form >
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>Masukkan email</Label>
-                            <Input onChangeText={(text) => this.onChangeHandler(text)} />
+                            <Input onChangeText={(text) => this.onChangeHandler(text, 'email')} />
                         </Item>
                     </Form>
 
