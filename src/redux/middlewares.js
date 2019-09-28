@@ -3,4 +3,8 @@ const middlewares = [];
 
 middlewares.push(promiseMiddleware);
 
-export default middlewares 
+// middlewares logger
+// const logger = createLogger();
+// middlewares.push(logger); 
+
+export default middlewares
