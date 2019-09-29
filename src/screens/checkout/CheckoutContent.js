@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image, FlatList } from 'react-native';
 import {
 	Text,
 	Icon,
@@ -29,6 +29,7 @@ export default class CartContent extends Component {
 
 	render() {
 		const thumbImg = this.state.productsImg;
+		const { cartItems, navigation, cartTotal } = this.props;
 
 		return (
 			<Content>

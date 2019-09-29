@@ -17,9 +17,11 @@ import { Grid, Col, Row } from 'react-native-easy-grid';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import CartContent from './CartContent';
+import { connect } from 'react-redux';
 
-export default class Cart extends Component {
+class Cart extends Component {
 	render() {
+		const { cartItems, navigation, cartTotal } = this.props;
 		return (
 			<StyleProvider style={getTheme(material)}>
 				<Container>
@@ -38,7 +40,7 @@ export default class Cart extends Component {
 							</Button>
 						</Right>
 					</Header>
-					<CartContent />
+					<CartContent cartItems={cartItems} cartTotal={cartTotal} />
 					<Footer style={styles.footerWrapper}>
 						<Row>
 							<Col>
@@ -76,3 +78,12 @@ const styles = StyleSheet.create({
 		textAlign:'center'
 	}
 })
+
+const mapStateToProps = (state) => ({
+    cartItems: state.cart.cart,
+    cartTotal: state.cart.total
+});
+
+export default connect(
+    mapStateToProps
+)(Cart);

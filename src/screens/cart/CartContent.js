@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image, FlatList } from 'react-native';
 import {
 	Text,
 	Icon,
@@ -31,9 +31,14 @@ class CartContent extends Component {
 	render() {
 		const { cartItems, navigation, cartTotal } = this.props;
 		const thumbImg = this.state.productsImg;
-
 		return (
 			<Content>
+				<FlatList 
+                  data={cartItems}
+            			renderItem={({item, index}) => <CartItems item={item} index={index} />}
+            			keyExtractor={(item) => item.id}
+            			ItemSeparatorComponent= {()=> <View style={{height:0.3, backgroundColor:'#34495e90'}}/> }
+            		/>
 				<Card style={styles.cardFull}>
 					<CardItem>
 						<View style={{flexDirection:'row', flexWrap:'wrap'}}>

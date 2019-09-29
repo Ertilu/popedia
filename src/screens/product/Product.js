@@ -20,7 +20,8 @@ import {
   ScrollView,
   View,
   Image,
-  Animated
+  Animated,
+  FlatList
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
@@ -53,7 +54,7 @@ class Product extends React.Component {
   }
   
   render() {
-    const { navigation, lang } = this.props
+    const { navigation, lang, cartItems } = this.props
     const { scrollY } = this.state
 
     const headerTranslate = scrollY.interpolate({
@@ -91,8 +92,8 @@ class Product extends React.Component {
             <Button transparent>
               <Icon style={styles.icon} name="share" />
             </Button>
-            <Button transparent>
-              <View style={styles.cartView}><Text style={styles.cartText}></Text></View>
+            <Button transparent onPress={() => this.props.navigation.navigate('Cart')}s>
+              <View style={styles.cartView}><Text style={styles.cartText}>{(cartItems).length}</Text></View>
               <Icon style={styles.icon} name="cart" />
             </Button>
             <Button transparent>
@@ -217,5 +218,9 @@ class Product extends React.Component {
   }
 }
 
-export default connect(null, {addToCart})(Product);
+const mapStateToProps = (state) => ({
+  cartItems: state.cart.cart
+});
+
+export default connect(mapStateToProps, {addToCart})(Product);
 // export default Product;

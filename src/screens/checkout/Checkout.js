@@ -4,9 +4,11 @@ import { View, Image, TouchableOpacity } from 'react-native'
 import styles from './styles';
 import Cart from './CheckoutContent';
 import { Grid, Col, Row } from 'react-native-easy-grid';
+import { connect } from 'react-redux'
 
-export default class Maintenance extends Component {
+class Checkout extends Component {
   render() {
+    const { cartItems, navigation, cartTotal } = this.props;
     return (
     <Container>
         <Header androidStatusBarColor={'#2aaa4d'} style={{backgroundColor: '#fff'}}>
@@ -54,7 +56,7 @@ export default class Maintenance extends Component {
                     </View>
                 </CardItem>
             </Card>
-            <Cart />
+            <Cart cartItems={cartItems} cartTotal={cartTotal} />
             <Card style={styles.cardFull}>
                 <Row>
                     <Col>
@@ -73,3 +75,11 @@ export default class Maintenance extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+    cartItems: state.cart.cart,
+    cartTotal: state.cart.total
+});
+
+
+export default Checkout;
