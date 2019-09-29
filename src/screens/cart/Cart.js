@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
 		borderRadius:3,
 		textAlign:'center'
 	}
+<<<<<<< HEAD
 })
 
 const mapStateToProps = (state) => ({
@@ -87,3 +88,6 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps
 )(Cart);
+=======
+}) 
+>>>>>>> 74190274b1a5e7cd4a6fc5f99fc7df5357787fbb

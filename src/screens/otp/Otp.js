@@ -22,6 +22,8 @@ import {
 import styles from './styles'
 
 import axios from 'axios'
+import { BASE_URL } from "../../router";
+
 
 import { NavigationEvents } from 'react-navigation'
 
@@ -42,7 +44,7 @@ class Otp extends React.Component {
     }
 
     resend = () => {
-        axios.post('http://192.168.0.116:4869/api/users/resend', { email: this.state.email })
+        axios.post(`${BASE_URL}/api/users/resend`, { email: this.state.email })
             .then(() => {
                 Toast.show({
                     text: "New Code Has Been Send",
@@ -65,7 +67,7 @@ class Otp extends React.Component {
         const numReg = /^\d{6}$/
         alert(this.state.num)
         if (numReg.test(this.state.num)) {
-            axios.post('http://192.168.0.116:4869/api/users/verify', { otp: this.state.num, email: this.state.email })
+            axios.post(`${BASE_URL}/api/users/verify`, { otp: this.state.num, email: this.state.email })
                 .then(res => {
                     AsyncStorage.setItem('name', res.data.user.name)
                     this.props.navigation.navigate("Home")

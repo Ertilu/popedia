@@ -22,6 +22,7 @@ import {
 import styles from './styles'
 
 import axios from 'axios'
+import { BASE_URL } from "../../router";
 
 class Register extends React.Component {
   constructor() {
@@ -42,7 +43,7 @@ class Register extends React.Component {
     const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     if (mail.test(this.state.email)) {
-      axios.post('http://192.168.0.116:4869/api/users/register', { name: this.state.name, email: this.state.email, password: this.state.password })
+      axios.post(`${BASE_URL}/api/users/register`, { name: this.state.name, email: this.state.email, password: this.state.password })
         .then(res => {
           this.props.navigation.navigate("Otp", { otp: res.data.otp, email: this.set.state.email })
         })

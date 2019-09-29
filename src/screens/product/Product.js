@@ -26,8 +26,8 @@ import {
 import Swiper from 'react-native-swiper';
 
 import styles from "./styles";
-import { addToCart } from '../../redux/actions/cartActions';
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { BASE_URL } from "../../router";
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -52,7 +52,7 @@ class Product extends React.Component {
     const item = navigation.getParam('item', {});
     this.props.addToCart(item);
   }
-  
+
   render() {
     const { navigation, lang, cartItems } = this.props
     const { scrollY } = this.state
@@ -68,7 +68,7 @@ class Product extends React.Component {
     const item = navigation.getParam('item', {});
 
     const images = item ? [item.image] : [];
-    const info =  [
+    const info = [
       { label: 'Berat', value: '300 gram' },
       { label: 'Kondisi', value: 'New' },
       { label: 'Asuransi', value: 'Opsional' },
@@ -76,7 +76,7 @@ class Product extends React.Component {
       { label: 'Kategori', value: item.category_id.name },
     ] || [];
     const description = item.description ? item.description.replace(/↵/gi, '\n') : '';
-  
+
     return (
       <Container style={styles.container}>
         <Animated.View style={[styles.header, { transform: [{ translateY: headerTranslate }] }]}>
@@ -127,7 +127,7 @@ class Product extends React.Component {
                     key={i}
                   >
                     <Image
-                      source={{ uri: 'http://192.168.0.116:4869'+item.image }}
+                      source={{ uri: `${BASE_URL}` + item.image }}
                       style={{
                         flex: 1,
                         height: '100%',
@@ -218,9 +218,13 @@ class Product extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cart
 });
 
 export default connect(mapStateToProps, {addToCart})(Product);
+=======
+export default connect(null, { addToCart })(Product);
+>>>>>>> 74190274b1a5e7cd4a6fc5f99fc7df5357787fbb
 // export default Product;

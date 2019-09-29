@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import {
-    Text,
-    View,
-    FlatList,
-    TouchableOpacity,
-    StyleSheet,
-    TextInput,
-    Image
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  TextInput,
+  Image
 } from 'react-native';
 import { Button } from 'native-base'
 import axios from 'axios'
+// import { getproducts } from '../Services/Axios/products';
+// import SimpleHeader from '../Components/Navigation/SimpleHeader';
+import { BASE_URL } from "../router";
 
 class Product extends Component {
   state = {
@@ -18,7 +21,8 @@ class Product extends Component {
   async componentDidMount() {
     await axios
       .get(
-        `http://192.168.0.110:4869/api/products`
+        // `http://192.168.0.110:4869/api/products`
+        `${BASE_URL}/api/products`
       )
       .then(res =>
         this.setState({
@@ -29,33 +33,32 @@ class Product extends Component {
   }
 
   render() {
-    const addItem = this.props.addItemsToCart;
 
     return (
       <View style={styles.listWrapper}>
         <FlatList
           data={this.state.products}
           renderItem={({ item }) =>
-          <Button
-            transparent
-            style={styles.listMenu}
-            onPress={()=> { this.props.navigation.navigate('Product', { item, addItem } ); }}
-          >
-            <Image
-            source={{uri: 'http://192.168.0.116:4869'+item.image}}
-            style={styles.menuIcon}
-            />
-            <View style={styles.menuText}>
-              <Text numberOfLines={2} style={styles.name}>
-                {item.name}
-              </Text>
-              <Text numberOfLines={1} style={styles.price}>
-                Rp {item.price}
-              </Text>
-            </View>
-          </Button>
+            <Button
+              transparent
+              style={styles.listMenu}
+              onPress={() => { this.props.navigation.navigate('Product', { item }); }}
+            >
+              <Image
+                source={{ uri: `${BASE_URL}` + item.image }}
+                style={styles.menuIcon}
+              />
+              <View style={styles.menuText}>
+                <Text numberOfLines={2} style={styles.name}>
+                  {item.name}
+                </Text>
+                <Text numberOfLines={1} style={styles.price}>
+                  Rp {item.price}
+                </Text>
+              </View>
+            </Button>
           }
-          keyExtractor={({id}) => id}
+          keyExtractor={({ id }) => id}
           numColumns={2}
         />
       </View>
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
     top: 145,
     width: '100%',
     padding: 7,
-    
+
   },
   name: {
     fontSize: 14
