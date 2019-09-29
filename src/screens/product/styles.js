@@ -1,12 +1,22 @@
 import { StyleSheet, Dimensions } from "react-native";
 
-const styles: any = StyleSheet.create({
+const styles  = StyleSheet.create({
 	container: {
 		backgroundColor: "white",
 	},
 	icon: {
 		color: 'white',
 		fontSize: 25
+	},
+	cartView: {
+		position: "absolute",
+		left: 15,
+		borderRadius: 50,
+		zIndex: 99,
+	},
+	cartText: {
+		color: 'salmon',
+		fontSize: 12,
 	},
 	header: {
 		flexDirection: 'row',

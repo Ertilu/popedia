@@ -20,7 +20,7 @@ import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
 import Checkout from './screens/checkout/Checkout';
 
-export const BASE_URL = 'http://192.168.0.116:4869';
+export const BASE_URL = 'http://192.168.0.110:4869';
 
 const AppNavigator = createStackNavigator(
   {

@@ -1,6 +1,7 @@
 import promiseMiddleware from 'redux-promise-middleware';
 const middlewares = [];
 
+// middleware redux promise
 middlewares.push(promiseMiddleware);
 
 // middlewares logger

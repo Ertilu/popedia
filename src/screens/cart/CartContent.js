@@ -14,8 +14,9 @@ import {
 	Input
 	} from 'native-base';
 import { Grid, Col, Row } from 'react-native-easy-grid';
+import { connect } from 'react-redux';
 
-export default class CartContent extends Component {
+class CartContent extends Component {
 	constructor() {
 	  super();
 	
@@ -28,6 +29,7 @@ export default class CartContent extends Component {
 	}
 
 	render() {
+		const { cartItems, navigation, cartTotal } = this.props;
 		const thumbImg = this.state.productsImg;
 
 		return (
@@ -204,3 +206,9 @@ const styles = StyleSheet.create({
 		width: 20
 	  },
 });
+
+const mapStateToProps = (state) => ({
+    cartItems: state.cart.cart
+});
+
+export default connect(mapStateToProps)(CartContent);

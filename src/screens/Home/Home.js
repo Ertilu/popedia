@@ -31,8 +31,6 @@ import ProductList from "../../components/ProductList";
 import Maintenance from "../maintenance/404";
 import { BASE_URL } from "../../router";
 
-
-
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 200
 

@@ -15,7 +15,6 @@ export default class App extends Component {
       <Provider store={store}>
         <Router />
       </Provider>
-
     );
   }
 }
