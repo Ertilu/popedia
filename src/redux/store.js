@@ -24,7 +24,7 @@ import thunk from 'redux-thunk';
 function configureStore(initialState = {}) {
   // Create the store with two middlewares
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [...createMiddlewares];
+  const middlewares = [thunk];
 
   const enhancers = [applyMiddleware(...middlewares)];
 

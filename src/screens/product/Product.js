@@ -50,7 +50,6 @@ class Product extends React.Component {
     const { navigation, lang } = this.props
     const item = navigation.getParam('item', {});
     this.props.addToCart(item);
-    alert('raka');
   }
   
   render() {
