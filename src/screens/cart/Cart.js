@@ -49,7 +49,7 @@ class Cart extends Component {
 							</Col>
 							<Col>
 							<TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>
-								<Text style={styles.checkoutFooter}>Beli (2)</Text>
+								<Text style={styles.checkoutFooter}>Beli ({(cartItems).length})</Text>
 							</TouchableOpacity>
 							</Col>
 						</Row>

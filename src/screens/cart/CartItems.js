@@ -14,10 +14,9 @@ import {
 	Input
 	} from 'native-base';
 import { Grid, Col, Row } from 'react-native-easy-grid';
-import { connect } from 'react-redux';
-import CartItems from './CartItems';
+import { BASE_URL } from './../../router';
 
-class CartContent extends Component {
+class CartItems extends Component {
 	constructor() {
 	  super();
 	
@@ -30,27 +29,56 @@ class CartContent extends Component {
 	}
 
 	render() {
-		const { cartItems, navigation, cartTotal } = this.props;
+		const { item, index } = this.props;
 		const thumbImg = this.state.productsImg;
 		return (
 			<Content>
 				<Card style={styles.cardFull}>
+					<View style={styles.topInfo}>
+						<Text style={{flex:0.8}}>
+							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>Official Store Popedia</Text>
+						</Text>
+						<Icon type='FontAwesome' name='trash-o' style={styles.trashIcon} />
+					</View>
 					<CardItem>
-						<View style={{flexDirection:'row', flexWrap:'wrap'}}>
-							<Image  
-								source={{uri: 'https://ecs7.tokopedia.net/img/cart-checkout/promo-stacking/icon-promo-1.png'}}
-								style={styles.menuIcon}
-							/>
-							<Text style={styles.promoText}>Gunakan Promo Popedia</Text>
+						<View>
+							<Thumbnail square source={{uri: `${BASE_URL}` + item.image}} />
+						</View>
+						<View style={{padding:10, flex:1}}>
+							<Text style={{fontSize:14}}>{item.name}</Text>
+							<Text style={styles.productPrice}>{item.price}</Text>
 						</View>
 					</CardItem>
+
+					<CardItem style={{paddingTop:0}}>
+						<Row>
+							<Col style={{flex:0.8, alignItems:'flex-end'}}>
+								<Text style={styles.removeQty}>
+									<Icon name='remove' style={{fontSize:17, color:'#e0e0e0'}}/>
+								</Text>
+							</Col>
+							<Col style={{flex:0.2}}>
+								<Item style={{borderColor:'#1CC625', top:-20}}>
+									<Input value={'1'} style={{paddingBottom:0, fontSize:14, textAlign:'center'}} />
+								</Item>
+							</Col>
+							<Col style={{flex:0.1, alignItems:'flex-end'}}>
+								<Text style={styles.addQty}>
+									<Icon name='add' style={{fontSize:17, color:'#1CC625'}}/>
+								</Text>
+							</Col>
+						</Row>
+					</CardItem>
+
+					<View style={styles.footerInfo}>
+						<Text>
+							<Text style={{color:'#bdbdbd', fontSize:12}}>Catatan untuk penjual (Opsional)</Text> <Text style={{fontSize:12, color:'#1CC625'}}>Tulis Catatan</Text>
+						</Text>
+						<Item style={{borderColor:'#1CC625', flex:1, width:'100%', top:-10}}>
+							<Input value={''} style={{paddingBottom:0, fontSize:12}} />
+						</Item>
+					</View>
 				</Card>
-				<FlatList 
-                 	data={cartItems}
-					renderItem={({item, index}) => <CartItems item={item} index={index} /> }
-					keyExtractor={(item) => item.id}
-					ItemSeparatorComponent= {()=> <View style={{height:0.3, backgroundColor:'#34495e90'}}/> }
-				/>
 			</Content>
 		)
 	}
@@ -119,4 +147,4 @@ const styles = StyleSheet.create({
 	  },
 });
 
-export default CartContent;
+export default CartItems;
