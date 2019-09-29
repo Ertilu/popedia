@@ -8,7 +8,6 @@ import {
   TextInput,
   Image
 } from 'react-native';
-import { connect } from 'react-redux';
 import { Button } from 'native-base'
 import axios from 'axios'
 // import { getproducts } from '../Services/Axios/products';
@@ -32,7 +31,6 @@ class Product extends Component {
       );
     console.log(this.state);
   }
-
 
   render() {
 
@@ -114,4 +112,5 @@ const styles = StyleSheet.create({
 //     }
 // };
 
+// export default connect(null, addToCart)(Product);
 export default Product;

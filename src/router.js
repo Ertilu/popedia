@@ -15,7 +15,7 @@ import AddProduct from "./screens/addProduct/AddProduct";
 import MyProduct from "./screens/myProduct/MyProduct";
 import Home from "./screens/home";
 import Sidebar from "./screens/sidebar";
-import Product from './screens/product';
+import Product from './screens/product/Product';
 import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
 import Checkout from './screens/checkout/Checkout';

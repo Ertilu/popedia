@@ -31,7 +31,7 @@ import { BASE_URL } from "../../router";
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
 
-class Home extends React.Component {
+class Product extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,6 +44,12 @@ class Home extends React.Component {
     this.setState({
       scrollY: event.nativeEvent.contentOffset.y
     })
+  }
+
+  addItemsToCart = () => {
+    const { navigation, lang } = this.props
+    const item = navigation.getParam('item', {});
+    this.props.addToCart(item);
   }
 
   render() {
@@ -86,7 +92,7 @@ class Home extends React.Component {
               <Icon style={styles.icon} name="share" />
             </Button>
             <Button transparent>
-              <View style={styles.cartView}><Text style={styles.cartText}>{this.state.cart}</Text></View>
+              <View style={styles.cartView}><Text style={styles.cartText}></Text></View>
               <Icon style={styles.icon} name="cart" />
             </Button>
             <Button transparent>
@@ -200,7 +206,6 @@ class Home extends React.Component {
             </Button>
             <Button
               style={styles.buttonCart}
-
               onPress={this.addItemsToCart}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
@@ -212,4 +217,5 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(null, { addToCart })(Product);
+// export default Product;
