@@ -60,9 +60,6 @@ class Otp extends React.Component {
         alert(this.props.navigation.getParam('email'))
     }
 
-
-
-
     validate() {
         const numReg = /^\d{6}$/
         alert(this.state.num)
