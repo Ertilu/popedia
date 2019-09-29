@@ -46,11 +46,12 @@ class Product extends React.Component {
     })
   }
 
-  // addToCart = () => {
-  //   const { navigation, lang } = this.props
-  //   const item = navigation.getParam('item', {});
-  //   this.props.addToCart({name: 'raka'})
-  // }
+  addItemsToCart = () => {
+    const { navigation, lang } = this.props
+    const item = navigation.getParam('item', {});
+    this.props.addToCart(item);
+    alert('raka');
+  }
   
   render() {
     const { navigation, lang } = this.props
@@ -206,8 +207,7 @@ class Product extends React.Component {
             </Button>
             <Button
               style={styles.buttonCart}
-         
-              onPress={this.addToCart}
+              onPress={this.addItemsToCart}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
             </Button>
@@ -218,4 +218,5 @@ class Product extends React.Component {
   }
 }
 
-export default connect(null, addToCart)(Product);
+export default connect(null, {addToCart})(Product);
+// export default Product;
