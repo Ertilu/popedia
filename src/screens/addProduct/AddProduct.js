@@ -19,6 +19,7 @@ import {
     Form,
     Toast
 } from "native-base";
+import ImagePicker from 'react-native-image-picker';
 import styles from './style'
 
 class AddProduct extends React.Component {
@@ -51,6 +52,28 @@ class AddProduct extends React.Component {
         }
     }
 
+    chooseFile = () => {
+        let options = {
+            title: 'Pilih Gambar',
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+        ImagePicker.showImagePicker(options, response => {
+            if (response.didCancel) {
+                alert('Batal Pilih Gambar');
+            } else if (response.error) {
+                alert('Pilih Gambar Error: ' + response.error);
+            } else {
+                let source = response;
+                this.setState({
+                    filePath: source,
+                });
+            }
+        });
+    };
+
     render() {
         const { navigation } = this.props
         return (
@@ -75,6 +98,11 @@ class AddProduct extends React.Component {
                             <Label style={styles.registerForm}>gambar</Label>
                             <Input onChangeText={(number) => this.onChangeHandler(number)} />
                         </Item>
+                        <Button
+                            style={{ borderWidth: 2, borderColor: '#ff8040', width: '90%', backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center' }}
+                            onPress={this.chooseFile.bind(this)}>
+                            <Text style={{ color: '#ff8040' }}>Pilih Gambar Produk</Text>
+                        </Button>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>kategori</Label>
                             <Input onChangeText={(number) => this.onChangeHandler(number)} />
