@@ -63,7 +63,7 @@ class Home extends Component {
   getCategories() {
     const queryView = `${BASE_URL}/api/categories`
     axios
-      // .get("https://randomproduct.me/api/?results=5")
+      // .get("https://randomproduct.me/api/?results=5")  
       .get(queryView)
       .then(response =>
         response.data.data.map(category => ({
