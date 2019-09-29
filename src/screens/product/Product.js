@@ -28,6 +28,7 @@ import Swiper from 'react-native-swiper';
 import styles from "./styles";
 import { connect } from "react-redux";
 import { BASE_URL } from "../../router";
+import { addToCart } from '../../redux/actions/cartActions';
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
