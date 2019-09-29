@@ -218,13 +218,9 @@ class Product extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cart
 });
 
 export default connect(mapStateToProps, {addToCart})(Product);
-=======
-export default connect(null, { addToCart })(Product);
->>>>>>> 74190274b1a5e7cd4a6fc5f99fc7df5357787fbb
-// export default Product;
+// export default Product; 
