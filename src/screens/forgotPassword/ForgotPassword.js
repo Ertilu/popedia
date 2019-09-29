@@ -42,6 +42,12 @@ class ForgotPassword extends React.Component {
         if (mail.test(this.state.email)) {
             axios.post('http://192.168.0.116:4869/api/users/forgot', { email: this.state.email })
                 .then(res => {
+                    Toast.show({
+                        text: 'Silahkan cek email untuk reset password',
+                        duration: 3000,
+                        position: 'top',
+                        textStyle: { textAlign: "center" }
+                    })
                     this.props.navigation.navigate("Login")
                 })
                 .catch(err => {

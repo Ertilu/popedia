@@ -45,39 +45,38 @@ class Login extends React.Component {
         .then(res => {
           alert(res.data.user.name)
           AsyncStorage.setItem('name', res.data.user.name)
-          this.props.navigation.navigate("Home")
+          this.props.navigation.navigate('Home')
         })
         .catch(err => {
           if (err.response) {
-            if (err.response.data.validate == true) {
-              Toast.show({
-                text: err.response.data.message,
-                duration: 2000,
-                position: 'top',
-                textStyle: { textAlign: 'center' }
+            if (err.response.data.validate == false) {
+              // Toast.show({
+              //   text: err.response.data.message,
+              //   duration: 2000,
+              //   position: 'top',
+              //   textStyle: { textAlign: 'center' }
 
+              // })
+              Toast.show({
+                // text: err.response.data.message, // check if user !validation(otp)
+                text: 'Silahkan verifikasi kode',
+                duration: 2000,
+                position: 'bottom',
+                textStyle: { textAlign: 'center' }
               })
             }
-            Toast.show({
-              text: err.response.data.message,
-              duration: 2000,
-              position: 'top',
-              textStyle: { textAlign: 'center' }
-
-            })
             setTimeout(() => this.props.navigation.navigate("Otp", { email: this.state.email }), 2500)
           } else if (err.request) {
             Toast.show({
-              text: JSON.stringify({ ...err.request }),
+              // text: JSON.stringify({ ...err.request }) // request from axios
+              text: 'terjadi kesalahan pada koneksi',
               duration: 2000,
-              position: 'top',
+              position: 'bottom',
               textStyle: { textAlign: 'center' }
 
             })
           }
-
         })
-
     } else {
       Toast.show({
         text: "Email & password harus benar",
@@ -90,7 +89,7 @@ class Login extends React.Component {
 
 
   render() {
-    const { lang, navigation } = this.props
+    const { navigation } = this.props
     return (
       <Container>
         <Header androidStatusBarColor={'#2aaa4d'} style={styles.header}>
