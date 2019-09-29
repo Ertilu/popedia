@@ -26,6 +26,7 @@ import Swiper from 'react-native-swiper';
 
 import styles from "./styles";
 import { connect } from "react-redux";
+import { BASE_URL } from "../../router";
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -60,7 +61,7 @@ class Home extends React.Component {
     const item = navigation.getParam('item', {});
 
     const images = item ? [item.image] : [];
-    const info =  [
+    const info = [
       { label: 'Berat', value: '300 gram' },
       { label: 'Kondisi', value: 'New' },
       { label: 'Asuransi', value: 'Opsional' },
@@ -119,7 +120,7 @@ class Home extends React.Component {
                     key={i}
                   >
                     <Image
-                      source={{ uri: 'http://192.168.0.116:4869'+item.image }}
+                      source={{ uri: `${BASE_URL}` + item.image }}
                       style={{
                         flex: 1,
                         height: '100%',
@@ -199,7 +200,7 @@ class Home extends React.Component {
             </Button>
             <Button
               style={styles.buttonCart}
-         
+
               onPress={this.addItemsToCart}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>

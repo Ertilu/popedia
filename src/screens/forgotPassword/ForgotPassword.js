@@ -21,6 +21,7 @@ import {
 } from "native-base";
 import styles from './styles'
 import axios from 'axios'
+import { BASE_URL } from "../../router"
 
 class ForgotPassword extends React.Component {
     constructor() {
@@ -40,7 +41,7 @@ class ForgotPassword extends React.Component {
         const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
         if (mail.test(this.state.email)) {
-            axios.post('http://192.168.0.116:4869/api/users/forgot', { email: this.state.email })
+            axios.post(`${BASE_URL}/api/users/forgot`, { email: this.state.email })
                 .then(res => {
                     Toast.show({
                         text: 'Silahkan cek email untuk reset password',

@@ -20,6 +20,7 @@ import {
   Toast
 } from "native-base";
 import styles from './styles'
+import { BASE_URL } from "../../router";
 
 import axios from 'axios'
 
@@ -41,7 +42,7 @@ class Login extends React.Component {
   validate() {
     const mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if (mail.test(this.state.email)) {
-      axios.post('http://192.168.0.116:4869/api/users/login', { email: this.state.email, password: this.state.password })
+      axios.post(`${BASE_URL}/api/users/login`, { email: this.state.email, password: this.state.password })
         .then(res => {
           AsyncStorage.setItem('name', res.data.user.name)
           this.props.navigation.navigate('Home')

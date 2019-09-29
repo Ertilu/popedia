@@ -62,23 +62,23 @@ class Home extends Component {
 
   getCategories() {
     const queryView = `${BASE_URL}/api/categories`
-    axios 
-    // .get("https://randomproduct.me/api/?results=5")
-    .get(queryView)
-    .then(response =>
-      response.data.data.map(category => ({
-        id: `${category._id}`,
-        name: `${category.name}`,
-      }))
-    )
-    .then(categories => {
-      this.setState({
-        categories,
-        isLoading: false
+    axios
+      // .get("https://randomproduct.me/api/?results=5")
+      .get(queryView)
+      .then(response =>
+        response.data.data.map(category => ({
+          id: `${category._id}`,
+          name: `${category.name}`,
+        }))
+      )
+      .then(categories => {
+        this.setState({
+          categories,
+          isLoading: false
+        })
       })
-    })
- 
-    .catch(error => this.setState({ error, isLoading: false }));
+
+      .catch(error => this.setState({ error, isLoading: false }));
   }
 
   render() {
@@ -118,25 +118,25 @@ class Home extends Component {
           </View>
           <Slider />
           <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
           >
             {
-            !this.state.isLoading ? (        
-              this.state.categories.map((category, i) => { 
-                return (
-                  <Menu
-                    key={category.id}
-                    {...category}
-                    index={i}
-                  />
-          
-                );
-              })
+              !this.state.isLoading ? (
+                this.state.categories.map((category, i) => {
+                  return (
+                    <Menu
+                      key={category.id}
+                      {...category}
+                      index={i}
+                    />
+
+                  );
+                })
               ) : (
-                <Text>Loading...</Text>
-              )
-            } 
+                  <Text>Loading...</Text>
+                )
+            }
           </ScrollView>
           <HomeCategory />
           <ProductList navigation={navigation} />
