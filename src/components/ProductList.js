@@ -21,7 +21,7 @@ class Product extends Component {
   async componentDidMount() {
     await axios
       .get(
-        `http://192.168.0.116:4869/api/products`
+        `http://192.168.0.110:4869/api/products`
       )
       .then(res =>
         this.setState({

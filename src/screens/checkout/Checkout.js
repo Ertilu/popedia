@@ -40,7 +40,7 @@ export default class Maintenance extends Component {
                 <CardItem>
                     <View style={{padding:10, flex:1}}>
                         <Text style={{fontSize:14}}>Rumah</Text>
-                        <Text style={{fontSize: 12}}>Reza Raka Nugraha</Text>
+                        <Text style={{fontSize: 12}}>Arkademy</Text>
                         <Text style={{fontSize: 10}}>Jl. Sukasari III No.47, RT.02/RW.01, Sukasari, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16142</Text>
                         <Text style={{fontSize: 10}}>+6287789513824</Text>
                         <View style={styles.alternativeLayoutButtonContainer}>

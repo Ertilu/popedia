@@ -24,9 +24,8 @@ import {
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
-
 import styles from "./styles";
-import BottomBar from "../../components/BottomBar";
+import { connect } from "react-redux";
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -35,7 +34,8 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      scrollY: new Animated.Value(0)
+      scrollY: new Animated.Value(0),
+      cart: 0
     }
   }
 
@@ -85,6 +85,7 @@ class Home extends React.Component {
               <Icon style={styles.icon} name="share" />
             </Button>
             <Button transparent>
+              <View style={styles.cartView}><Text style={styles.cartText}>{this.state.cart}</Text></View>
               <Icon style={styles.icon} name="cart" />
             </Button>
             <Button transparent>
@@ -192,13 +193,14 @@ class Home extends React.Component {
             </Button>
             <Button
               style={styles.buttonBuy} bordered
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("Cart")}
             >
               <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
             </Button>
             <Button
               style={styles.buttonCart}
-              onPress={() => navigation.navigate("Login")}
+         
+              onPress={this.addItemsToCart}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
             </Button>

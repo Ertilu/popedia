@@ -1,3 +1,13 @@
+// import { createStore, applyMiddleware } from 'redux';
+// import thunk from 'redux-thunk';
+
+// import rootReducer from './reducers';
+
+// const middleware = [thunk];
+// const initialState = {};
+
+// export default createStore(rootReducer, initialState, applyMiddleware(...middleware));
+
 /**
  * Create the store with dynamic reducers
  */
@@ -8,6 +18,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 // import createReducer from './reducers';
 import createMiddlewares from './middlewares';
+import rootReducer from './reducers';
 
 function configureStore(initialState = {}) {
   // Create the store with two middlewares
@@ -26,8 +37,8 @@ function configureStore(initialState = {}) {
       : compose;
   /* eslint-enable */
 
-
   const store = createStore(
+    rootReducer, 
     composeEnhancers(...enhancers),
   );
 
