@@ -25,12 +25,13 @@ import {
 import Swiper from 'react-native-swiper';
 
 import styles from "./styles";
-import { connect } from "react-redux";
+import { addToCart } from '../../redux/actions/cartActions';
+import { connect } from 'react-redux';
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
 
-class Home extends React.Component {
+class Product extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,6 +46,12 @@ class Home extends React.Component {
     })
   }
 
+  // addToCart = () => {
+  //   const { navigation, lang } = this.props
+  //   const item = navigation.getParam('item', {});
+  //   this.props.addToCart({name: 'raka'})
+  // }
+  
   render() {
     const { navigation, lang } = this.props
     const { scrollY } = this.state
@@ -68,7 +75,7 @@ class Home extends React.Component {
       { label: 'Kategori', value: item.category_id.name },
     ] || [];
     const description = item.description ? item.description.replace(/↵/gi, '\n') : '';
-
+  
     return (
       <Container style={styles.container}>
         <Animated.View style={[styles.header, { transform: [{ translateY: headerTranslate }] }]}>
@@ -85,7 +92,7 @@ class Home extends React.Component {
               <Icon style={styles.icon} name="share" />
             </Button>
             <Button transparent>
-              <View style={styles.cartView}><Text style={styles.cartText}>{this.state.cart}</Text></View>
+              <View style={styles.cartView}><Text style={styles.cartText}></Text></View>
               <Icon style={styles.icon} name="cart" />
             </Button>
             <Button transparent>
@@ -200,7 +207,7 @@ class Home extends React.Component {
             <Button
               style={styles.buttonCart}
          
-              onPress={this.addItemsToCart}
+              onPress={this.addToCart}
             >
               <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
             </Button>
@@ -211,4 +218,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(null, addToCart)(Product);

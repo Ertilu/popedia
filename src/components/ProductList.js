@@ -8,11 +8,8 @@ import {
     TextInput,
     Image
 } from 'react-native';
-import { connect } from 'react-redux';
 import { Button } from 'native-base'
 import axios from 'axios'
-// import { getproducts } from '../Services/Axios/products';
-// import SimpleHeader from '../Components/Navigation/SimpleHeader';
 
 class Product extends Component {
   state = {
@@ -31,9 +28,9 @@ class Product extends Component {
     console.log(this.state);
   }
 
-
   render() {
-    
+    const addItem = this.props.addItemsToCart;
+
     return (
       <View style={styles.listWrapper}>
         <FlatList
@@ -42,7 +39,7 @@ class Product extends Component {
           <Button
             transparent
             style={styles.listMenu}
-            onPress={()=> { this.props.navigation.navigate('Product', { item } ); }}
+            onPress={()=> { this.props.navigation.navigate('Product', { item, addItem } ); }}
           >
             <Image
             source={{uri: 'http://192.168.0.116:4869'+item.image}}
@@ -112,4 +109,5 @@ const styles = StyleSheet.create({
 //     }
 // };
 
+// export default connect(null, addToCart)(Product);
 export default Product;

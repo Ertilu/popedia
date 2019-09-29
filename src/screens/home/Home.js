@@ -81,6 +81,11 @@ class Home extends Component {
     .catch(error => this.setState({ error, isLoading: false }));
   }
 
+  addItemsToCart = (product) => {
+    this.props.addToCart(product);
+    const raka = 'raka';
+  }
+
   render() {
     const { navigation } = this.props
     const { scrollY, scroll } = this.state
@@ -139,7 +144,7 @@ class Home extends Component {
             } 
           </ScrollView>
           <HomeCategory />
-          <ProductList navigation={navigation} />
+          <ProductList navigation={navigation} addItemsToCart={this.addItemsToCart}  />
         </Content>
         <BottomBar
           navigation={navigation}
@@ -149,4 +154,5 @@ class Home extends Component {
   }
 }
 
-export default Home;
+// export default connect(null, addToCart)(Home);
+export default Home
