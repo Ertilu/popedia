@@ -21,7 +21,8 @@ import { connect } from 'react-redux';
 
 class Cart extends Component {
 	render() {
-		const { cartItems, navigation, cartTotal } = this.props;
+		const { cartItems, navigation, cartTotal, cartQuantity } = this.props;
+		let totalPrice = cartTotal;
 		return (
 			<StyleProvider style={getTheme(material)}>
 				<Container>
@@ -45,10 +46,10 @@ class Cart extends Component {
 						<Row>
 							<Col>
 								<Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga ({(cartItems).length} Barang)</Text>
-								<Text style={{fontSize:15, color:'#ff5722'}}>Rp {cartTotal}</Text>
+								<Text style={{fontSize:15, color:'#ff5722'}}>Rp {totalPrice}</Text>
 							</Col>
 							<Col>
-							<TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>
+							<TouchableOpacity onPress={() => navigation.navigate("Checkout")}>
 								<Text style={styles.checkoutFooter}>Beli ({(cartItems).length})</Text>
 							</TouchableOpacity>
 							</Col>
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
     cartItems: state.cart.cart,
-    cartTotal: state.cart.total
+    cartTotal: state.cart.total,
+	cartQuantity: state.cart.quantity
 });
 
 export default connect(
