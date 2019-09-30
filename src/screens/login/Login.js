@@ -44,8 +44,11 @@ class Login extends React.Component {
     if (mail.test(this.state.email)) {
       axios.post(`${BASE_URL}/api/users/login`, { email: this.state.email, password: this.state.password })
         .then(res => {
+          AsyncStorage.setItem('bindID', res.data.user._id)
           AsyncStorage.setItem('name', res.data.user.name)
-          this.props.navigation.navigate('Home')
+          alert(res.data.user._id)
+          // this.props.navigation.navigate('Home')
+
         })
         .catch(err => {
           if (err.response) {

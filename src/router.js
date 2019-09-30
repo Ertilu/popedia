@@ -13,14 +13,18 @@ import ForgotPassword from "./screens/forgotPassword/ForgotPassword";
 import Profile from "./screens/profile/Profile";
 import AddProduct from "./screens/addProduct/AddProduct";
 import MyProduct from "./screens/myProduct/MyProduct";
-import Home from "./screens/home";
+import Home from "./screens/Home/Home";
 import Sidebar from "./screens/sidebar";
 import Product from './screens/product/Product';
 import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
 import Checkout from './screens/checkout/Checkout';
 
+<<<<<<< HEAD
 export const BASE_URL = 'http://192.168.1.28:4869';
+=======
+export const BASE_URL = 'http://ec2-54-204-153-133.compute-1.amazonaws.com:4869';
+>>>>>>> 33410484a4d276023852d1144a6dcc30b6d48e48
 
 const AppNavigator = createStackNavigator(
   {
