@@ -11,7 +11,7 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 cart: [action.payload, ...state.cart],
-                total: state.total + action.payload.cost
+                total: state.total + action.payload.price
             }
         case EMPTY_CART:
             return {
