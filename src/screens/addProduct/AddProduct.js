@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Platform, TouchableOpacity, TextInput } from "react-native";
+import { Image, Platform, TouchableOpacity } from "react-native";
 import {
     Container,
     Content,
@@ -17,8 +17,9 @@ import {
     Label,
     Input,
     Form,
-    Toast
+    Toast, Picker
 } from "native-base";
+import { BASE_URL } from '../../router'
 import ImagePicker from 'react-native-image-picker';
 import styles from './style'
 
@@ -30,7 +31,16 @@ class AddProduct extends React.Component {
             num: '',
             numValidate: true,
             code: '',
+            filePath: {},
+            selected: undefined,
+            categories: []
         }
+    }
+
+    onValueChange(value) {
+        this.setState({
+            selected: value
+        });
     }
 
     onChangeHandler(number) {
@@ -38,10 +48,12 @@ class AddProduct extends React.Component {
     }
 
     validate() {
-        const numReg = /^[a-zA-Z]$/
+        // const nameReg = /^[a-zA-Z]$/
+        // const quantityReg = /^[0-9]$/
+        const nameReg = /^[a-zA-Z]$/
 
-        if (numReg.test(this.state.code)) {
-            this.props.navigation.navigate("Home")
+        if (nameReg.test(this.state.code)) {
+            this.props.navigation.navigate("MyProduct")
         } else {
             Toast.show({
                 text: "Isi dengan benar",
@@ -90,26 +102,38 @@ class AddProduct extends React.Component {
                 </Header>
                 <Content style={styles.content}>
                     <Form >
+                        <Image
+                            source={{ uri: this.state.filePath.uri }}
+                            style={{ width: 300, alignSelf: 'center', marginBottom: '5%', marginTop: '5%', borderWidth: 2, borderColor: 'gray', height: 200, borderRadius: 10 }}
+                        />
+                        <Button
+                            style={{ borderWidth: 2, borderColor: 'gray', width: '70%', backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', borderRadius: 10 }}
+                            onPress={this.chooseFile.bind(this)}>
+                            <Text style={{ color: 'gray' }}>Pilih Gambar Produk</Text>
+                        </Button>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>nama</Label>
                             <Input onChangeText={(number) => this.onChangeHandler(number)} />
                         </Item>
-                        <Item floatingLabel>
-                            <Label style={styles.registerForm}>gambar</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
-                        </Item>
-                        <Button
-                            style={{ borderWidth: 2, borderColor: '#ff8040', width: '90%', backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center' }}
-                            onPress={this.chooseFile.bind(this)}>
-                            <Text style={{ color: '#ff8040' }}>Pilih Gambar Produk</Text>
-                        </Button>
-                        <Item floatingLabel>
-                            <Label style={styles.registerForm}>kategori</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
-                        </Item>
+                        <Form >
+                            <Picker
+                                mode="dropdown"
+                                placeholder="Pilih"
+                                selectedValue={this.state.selected}
+                                onValueChange={this.onValueChange.bind(this)}
+                                style={styles.registerForm}
+                            >
+                                <Picker.Item label="-- Pilih kategori --" />
+                                <Picker.Item label="Wallet" value="key0" />
+                                <Picker.Item label="ATM Card" value="key1" />
+                                <Picker.Item label="Debit Card" value="key2" />
+                                <Picker.Item label="Credit Card" value="key3" />
+                                <Picker.Item label="Net Banking" value="key4" />
+                            </Picker>
+                        </Form>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>kuantitas</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                            <Input keyboardType='numeric' />
                         </Item>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>deskripsi</Label>
@@ -117,14 +141,14 @@ class AddProduct extends React.Component {
                         </Item>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>price</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                            <Input keyboardType='number-pad' onChangeText={(number) => this.onChangeHandler(number)} />
                         </Item>
                     </Form>
 
 
                     <View style={{ marginTop: 20 }} padder>
                         <Button style={{ backgroundColor: '#2aaa4d' }} block onPress={() => this.validate()}>
-                            <Text style={{ fontWeight: "600" }} uppercase={false} bold>Kirim</Text>
+                            <Text style={{ fontWeight: "600" }} uppercase={false} bold >Kirim</Text>
                         </Button>
                         <Text style={styles.loginOption}>Isi produk dengan benar</Text>
                     </View>
