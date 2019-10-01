@@ -5,10 +5,24 @@ import styles from './styles';
 import Cart from './CheckoutContent';
 import { Grid, Col, Row } from 'react-native-easy-grid';
 import { connect } from 'react-redux'
+import axios from 'axios';
 
 class Checkout extends Component {
+  checkout = () => {
+    this.props.cartItems.map(data => {
+        axios 
+        .post('http://ec2-54-204-153-133.compute-1.amazonaws.com:4869/api/products/checkout', {"cart" : [
+                {
+                    "_id": data._id,
+                    "by": data.quantity
+                }
+            ] 
+        })
+    })
+  }
   render() {
-    const { cartItems, navigation, cartTotal } = this.props;
+    const { cartItems, navigation, cartTotal } = this.props;    
+
     return (
     <Container>
         <Header androidStatusBarColor={'#2aaa4d'} style={{backgroundColor: '#fff'}}>
@@ -60,11 +74,11 @@ class Checkout extends Component {
             <Card style={styles.cardFull}>
                 <Row>
                     <Col>
-                        <Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga (2 Barang)</Text>
-                        <Text style={{fontSize:15, color:'#ff5722'}}>Rp 14.399.000</Text>
+                        <Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga  ({(cartItems).length} Barang)</Text>
+                        <Text style={{fontSize:15, color:'#ff5722'}}>Rp {cartTotal}</Text>
                     </Col>
                     <Col>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>
+                    <TouchableOpacity onPress={this.checkout}>
                         <Text style={styles.checkoutFooter}>Checkout</Text>
                     </TouchableOpacity>
                     </Col>
@@ -78,8 +92,8 @@ class Checkout extends Component {
 
 const mapStateToProps = (state) => ({
     cartItems: state.cart.cart,
-    cartTotal: state.cart.total
+    cartTotal: state.cart.total,
 });
 
 
-export default Checkout;
+export default connect(mapStateToProps)(Checkout);

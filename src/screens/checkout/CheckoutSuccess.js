@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image, FlatList } from 'react-native';
+import { View, StyleSheet, ScrollView, Image, FlatList, TouchableOpacity } from 'react-native';
 import {
 	Text,
 	Icon,
@@ -11,36 +11,20 @@ import {
 	Card,
 	CardItem,
 	Item,
-	Input
+	Input,
+	Footer
 	} from 'native-base';
-import { Grid, Col, Row } from 'react-native-easy-grid';
-import { connect } from 'react-redux';
-import CheckoutItems from './CheckoutItems';
 
-class CheckoutContent extends Component {
-	constructor() {
-	  super();
-	
-	  this.state = {
-	  	productsImg: [
-	  		'https://ecs7.tokopedia.net/img/cache/200-square/product-1/2018/3/8/4077432/4077432_7d83ad20-8635-41a1-b679-56d64bbb7f7b_800_800.jpg.webp',
-	  		'https://ecs7.tokopedia.net/img/cache/300/product-1/2016/9/1/11879544/11879544_ed0fd95b-8b63-4445-a278-feb09e66ff0b.jpg'
-	  	]
-	  };
-	}
+class CheckoutSuccess extends Component {
 
 	render() {
-		const thumbImg = this.state.productsImg;
-		const { cartItems, navigation, cartQuantity } = this.props;
+		const { item } = this.props;
 
 		return (
 			<Content>
-				<FlatList 
-                 	data={cartItems}
-					renderItem={({item, index}) => <CheckoutItems item={item} index={index} /> }
-					keyExtractor={(item) => item._id}
-					ItemSeparatorComponent= {()=> <View style={{height:0.3, backgroundColor:'#34495e90'}}/> }
-				/>
+				<Card style={styles.cardFull}>
+					
+				</Card>
 			</Content>
 		)
 	}
@@ -107,6 +91,24 @@ const styles = StyleSheet.create({
 		height: 20,
 		width: 20
 	  },
+	  footerWrapper: {
+		backgroundColor:'red',
+		padding:8,
+		paddingLeft:15,
+		paddingRight:15,
+		position: "absolute",
+		bottom: 0,
+	},
+	checkoutFooter: {
+		fontSize:14,
+		color:'#fff',
+		backgroundColor:'#ff5722',
+		justifyContent:'center',
+		padding:10,
+		width:'100%',
+		borderRadius:3,
+		textAlign:'center'
+	},
 });
 
-export default CheckoutContent;
+export default CheckoutSuccess;

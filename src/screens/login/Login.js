@@ -46,9 +46,7 @@ class Login extends React.Component {
         .then(res => {
           AsyncStorage.setItem('bindID', res.data.user._id)
           AsyncStorage.setItem('name', res.data.user.name)
-          alert(res.data.user._id)
-          // this.props.navigation.navigate('Home')
-
+          this.props.navigation.navigate('Home')
         })
         .catch(err => {
           if (err.response) {

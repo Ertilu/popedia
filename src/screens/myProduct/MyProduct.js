@@ -10,56 +10,56 @@ import MyCard from './MyCard'
 
 export default class ListThumbnailExample extends Component {
 
-    state = {
-        products: []
-    }
+  state = {
+    products: []
+  }
 
-    componentDidMount() {
-        AsyncStorage.getItem('bindID', (err, bindID) => {
-            axios.get(BASE_URL + '/api/products/user/' + bindID)
-                .then(res => {
-                    this.setState({ products: res.data.data })
-                    alert(JSON.stringify(data))
-                })
-                .catch(err => {
-                    alert(err.response.message)
-                    alert(JSON.stringify(user_id))
-                })
+  componentDidMount() {
+    AsyncStorage.getItem('bindID', (err, bindID) => {
+      axios.get(BASE_URL + '/api/products/user/' + bindID)
+        .then(res => {
+          this.setState({ products: res.data.data })
+          alert(JSON.stringify(data))
         })
+        .catch(err => {
+          alert(err.response.message)
+          alert(JSON.stringify(user_id))
+        })
+    })
 
 
-        // alert(bindID)
+    // alert(bindID)
 
-    }
+  }
 
-    render() {
-        const { navigation } = this.props
-        return (
-            <Container>
-                <Header style={{ backgroundColor: 'white' }}>
-                    <Left >
-                        <Button transparent onPress={() => navigation.goBack()}>
-                            <Icon style={{ color: 'gray' }} name='arrow-back' />
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title style={{ color: 'gray' }}>Daftar produk</Title>
-                    </Body>
-                    <Right>
-                        <Button transparent >
-                            <Icon style={{ color: 'gray' }} onPress={() => navigation.navigate("AddProduct")} name='add' />
-                        </Button>
-                    </Right>
-                </Header>
+  render() {
+    const { navigation } = this.props
+    return (
+      <Container>
+        <Header style={{ backgroundColor: 'white' }}>
+          <Left >
+            <Button transparent onPress={() => navigation.goBack()}>
+              <Icon style={{ color: 'gray' }} name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={{ color: 'gray' }}>Daftar produk</Title>
+          </Body>
+          <Right>
+            <Button transparent >
+              <Icon style={{ color: 'gray' }} onPress={() => navigation.navigate("AddProduct")} name='add' />
+            </Button>
+          </Right>
+        </Header>
 
-                <Content>
-                    <FlatList
-                        data={this.state.products}
-                        renderItem={({ item }) => <MyCard product={item} navigate={this.props.navigation.navigate} />}
-                        keyExtractor={item => item._id.toString()}
-                    />
-                </Content>
-            </Container>
-        )
-    }
+        <Content>
+          <FlatList
+            data={this.state.products}
+            renderItem={({ item }) => <MyCard product={item} navigate={this.props.navigation.navigate} />}
+            keyExtractor={item => item._id.toString()}
+          />
+        </Content>
+      </Container>
+    )
+  }
 }

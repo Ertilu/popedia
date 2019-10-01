@@ -155,4 +155,4 @@ class Home extends Component {
 }
 
 // export default connect(null, addToCart)(Home);
-export default Home
+export default Home  

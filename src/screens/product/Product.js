@@ -74,10 +74,24 @@ class Product extends React.Component {
   }
 
   addItemsToCart = () => {
-    const { navigation, lang } = this.props
-    const item = navigation.getParam('item', {});
-    this.props.addToCart(item);
+    const { item } = this.state
+
+    const exist = this.props.cartItems.filter(data => data._id == item._id)
+
+    if (exist.length == 0) {
+      this.props.addToCart(item);
+      this.props.navigation.navigate('Cart')
+
+    } else {
+      this.props.navigation.navigate('Cart')
+    }
   }
+
+  componentDidMount() {
+    this.setState({ item: this.props.navigation.getParam('item') })
+  }
+
+
 
   render() {
     const { navigation, lang, cartItems } = this.props
