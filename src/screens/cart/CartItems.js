@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, FlatList, TouchableOpacity } from 'react-native';
 import {
 	Text,
 	Icon,
@@ -16,7 +16,7 @@ import {
 	} from 'native-base';
 import { Grid, Col, Row } from 'react-native-easy-grid';
 import { BASE_URL } from './../../router';
-import { addQuantity, reduceQuantity } from '../../redux/actions/cartActions'; 
+import { addQuantity, reduceQuantity, removeItem } from '../../redux/actions/cartActions'; 
 import { connect } from 'react-redux';
 
 class CartItems extends Component {
@@ -37,7 +37,6 @@ class CartItems extends Component {
 			this.setState({
 				quantity: parseInt(this.state.quantity) - 1
 			})
-			
 		}
 	}
 
@@ -57,6 +56,18 @@ class CartItems extends Component {
 		})
 	}
 
+	delete = () => {
+		Alert.alert(
+			'Konfirmasi',
+			'Apa kamu yakin ingin menghapus produk ini dari keranjang?',
+			[
+			{text: 'No', onPress:() => console.log('Cancel Pressed'), style: 'cancel'},
+			{text: 'Yes', onPress:() => { this.props.removeItem({index: this.props.index, item: this.props.item})}},
+			],
+			{ cancelable: true}
+		)
+	}
+
 	render() {
 		const { item } = this.props;
 		// const name = (this.props.item.user_id.name == 'null') ? 'Official Store Popedia' : this.props.item.user_id.name; 
@@ -64,12 +75,14 @@ class CartItems extends Component {
 		return (
 			<Content>
 				<Card style={styles.cardFull}>
-					<View style={styles.topInfo}>
-						<Text style={{flex:0.8}}>
-							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>Official Store Popedia</Text>
-						</Text>
-						<Icon type='FontAwesome' name='trash-o' style={styles.trashIcon} />
-					</View>
+					<TouchableOpacity onPress={this.delete}>
+						<View style={styles.topInfo}>				
+							<Text style={{flex:0.8}}>
+								<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>Official Store Popedia</Text>
+							</Text>
+								<Icon type='FontAwesome' name='trash-o' style={styles.trashIcon}  />		
+						</View>
+					</TouchableOpacity>
 					<CardItem>
 						<View>
 							<Thumbnail square source={{uri: `${BASE_URL}` + item.image}} />
@@ -206,4 +219,4 @@ const mapStateToProps = (state) => ({
     cartQuantity: state.cart.quantity
 });
 
-export default connect(mapStateToProps, {addQuantity, reduceQuantity})(CartItems);
+export default connect(mapStateToProps, {addQuantity, reduceQuantity, removeItem})(CartItems);

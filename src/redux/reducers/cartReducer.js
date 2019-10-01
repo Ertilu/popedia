@@ -48,7 +48,7 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 cart: state.cart.filter((item, i) => i !== action.payload.index),
-                total: state.total - action.payload.item.cost
+                total: 0
             }
         default:
             return state
