@@ -1,114 +1,75 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image, FlatList, TouchableOpacity } from 'react-native';
-import {
-	Text,
-	Icon,
-	Content,
-	Button,
-	Body,
-	Title,
-	Thumbnail,
-	Card,
-	CardItem,
-	Item,
-	Input,
-	Footer
-	} from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import { View, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
 
-class CheckoutSuccess extends Component {
-
-	render() {
-		const { item } = this.props;
-
-		return (
-			<Content>
-				<Card style={styles.cardFull}>
-					
-				</Card>
-			</Content>
-		)
-	}
+export default class Maintenance extends Component {
+  render() {
+    return (
+      <Container>
+        <Header style={styles.container} androidStatusBarColor={'#2aaa4d'} />
+        <Content padder>
+          <Card transparent>
+            <CardItem>
+              <Body>
+                <View style={styles.imageContainer}>
+                  <Image
+                    style={styles.image}
+                    source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx5mohd6aeOhZG6rQZIk8pi7dIi9bcML_d0329pn6TiPp8tvvu' }}
+                  />
+                </View>
+                <Text style={styles.text}>
+                  Terimakasih telah berbelanja di Popedia, pesanan anda sedang diproses. Silahkan tunggu 2-3 hari sampai pesanan anda telah tiba.
+              </Text>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}>
+                  <Text style={styles.back} note>Klik disini untuk lanjut berbelanja</Text>
+                </TouchableOpacity>
+              </Body>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-	cardFull: {
-		marginTop: 20,
-		marginHorizontal:0,
-		width:'100%',
-		marginLeft:0,
-		borderRadius:0
+	container: {
+        backgroundColor: '#2aaa4d',
 	},
-	promoText: {
-		color:'#1CC625',
-		fontSize:11,
-		left: 15
+	row: {
+		flex: 1,
+		alignItems: "center",
 	},
-	trashIcon: {
-		flex:0.2,
-		fontSize:16,
-		color:'#bdbdbd',
-		right:-50
+	text: {
+		fontSize: 20,
+		textAlign: "center",
 	},
-	productPrice: {
-		fontSize:13,
-		color:'#ff5722',
-		marginTop:8
+	mt: {
+		marginTop: 18,
 	},
-	removeQty: {
-		padding:5,
-		paddingRight:9,
-		paddingLeft:9,
-		borderRadius:15,
-		borderWidth:0.5,
-		borderColor:'#e0e0e0'
+	circle: {
+		backgroundColor: '#2aaa4d',
+		position: 'absolute',
+		height: 80,
+		width: Dimensions.get('window').width + 80,
+		top: 0,
+		left: -40,
+		borderBottomLeftRadius: 80,
+		borderBottomRightRadius: 80
 	},
-	addQty: {
-		padding:5,
-		paddingRight:9,
-		paddingLeft:9,
-		borderRadius:15,
-		borderWidth:0.5,
-		borderColor:'#1CC625'
+	imageContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		textAlign: 'center',
+		marginHorizontal: '20%',
+		marginTop: 100,
 	},
-	footerInfo: {
-		borderTopWidth:0.5,
-		borderColor:'#e0e0e0',
-		padding:10,
-		paddingLeft:15,
-		paddingRight:15,
-		justifyContent:'center'
+	image: {
+		width: 200,
+		height: 200,
 	},
-	topInfo: {
-		borderBottomWidth:0.5,
-		borderColor:'#e0e0e0',
-		padding:10,
-		paddingBottom:22,
-		paddingLeft:15,
-		paddingRight:15,
-		flexDirection:'row'
-	},
-	menuIcon: {
-		height: 20,
-		width: 20
-	  },
-	  footerWrapper: {
-		backgroundColor:'red',
-		padding:8,
-		paddingLeft:15,
-		paddingRight:15,
-		position: "absolute",
-		bottom: 0,
-	},
-	checkoutFooter: {
-		fontSize:14,
-		color:'#fff',
-		backgroundColor:'#ff5722',
-		justifyContent:'center',
-		padding:10,
-		width:'100%',
-		borderRadius:3,
-		textAlign:'center'
+	back: {
+		marginTop: 100,
+		marginLeft: 50,
 	},
 });
-
-export default CheckoutSuccess;

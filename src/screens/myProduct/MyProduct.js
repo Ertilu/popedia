@@ -8,13 +8,14 @@ import { BASE_URL } from '../../router'
 
 import MyCard from './MyCard'
 
+import { NavigationEvents } from 'react-navigation'
+
 export default class ListThumbnailExample extends Component {
 
   state = {
     products: []
   }
-
-  componentDidMount() {
+  myProducts() {
     AsyncStorage.getItem('bindID', (err, bindID) => {
       axios.get(BASE_URL + '/api/products/user/' + bindID)
         .then(res => {
@@ -26,10 +27,9 @@ export default class ListThumbnailExample extends Component {
           alert(JSON.stringify(user_id))
         })
     })
-
-
-    // alert(bindID)
-
+  }
+  async componentDidMount() {
+    await this.myProducts()
   }
 
   render() {
@@ -37,6 +37,9 @@ export default class ListThumbnailExample extends Component {
     return (
       <Container>
         <Header style={{ backgroundColor: 'white' }}>
+          <NavigationEvents
+            onDidFocus={() => this.myProducts()}
+          />
           <Left >
             <Button transparent onPress={() => navigation.goBack()}>
               <Icon style={{ color: 'gray' }} name='arrow-back' />

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 	  },
-	  cardFull: {
+	cardFull: {
 		marginTop: 20,
 		marginHorizontal:0,
 		width:'100%',

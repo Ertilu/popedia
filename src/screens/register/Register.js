@@ -45,7 +45,7 @@ class Register extends React.Component {
     if (mail.test(this.state.email)) {
       axios.post(`${BASE_URL}/api/users/register`, { name: this.state.name, email: this.state.email, password: this.state.password })
         .then(res => {
-          this.props.navigation.navigate("Otp", { otp: res.data.otp, email: this.set.state.email })
+          this.props.navigation.navigate("Otp", { email: this.state.email })
         })
         .catch(err => {
           Toast.show({

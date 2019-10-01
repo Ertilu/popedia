@@ -14,10 +14,10 @@ import {
   Footer,
   Header,
   Item,
-  TouchableOpacity,
   Thumbnail,
   Card,
-  CardItem
+  CardItem,
+  Badge
 } from "native-base";
 
 import {
@@ -26,7 +26,8 @@ import {
   Image,
   Animated,
   FlatList,
-  AsyncStorage
+  AsyncStorage,
+  TouchableOpacity
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
@@ -36,7 +37,6 @@ import { BASE_URL } from "../../router";
 import { addToCart } from '../../redux/actions/cartActions';
 import axios from 'axios'
 import { NavigationEvents } from 'react-navigation'
-
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -186,6 +186,16 @@ class Product extends React.Component {
                         width: '100%',
                       }}
                     />
+                    <TouchableOpacity onPress={this.addWishlist}>
+                      <View>
+                        <Text>
+
+                        </Text>
+                        <Badge primary style={styles.badge}>
+                          <Icon name="heart" style={styles.badgeIcon} />
+                        </Badge>
+                      </View>
+                    </TouchableOpacity>
                   </View>
                 )
               })}
@@ -292,9 +302,7 @@ class Product extends React.Component {
             </View>
           </Footer>
         }
-
-
-      </Container >
+      </Container>
     );
   }
 }

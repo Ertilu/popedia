@@ -6,8 +6,16 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		color: 'white',
-		fontSize: 25
+		fontSize: 25,
 	},
+	goBack: {
+		textAlign: 'left',
+		marginRight: 200
+	},
+	textHeader: {
+        color: 'gray',
+        fontWeight: "600"
+    },
 	cartView: {
 		position: "absolute",
 		left: 15,
@@ -124,6 +132,16 @@ const styles = StyleSheet.create({
 		color: 'gray',
 		fontWeight: "600",
 		textAlign: 'center'
+	},
+	badge: {
+		position: "absolute",
+		bottom: 20,
+		left: 350,
+		backgroundColor: 'white',
+		borderColor: 'black',
+	},
+	badgeIcon: {
+		fontSize: 30,
 	}
 });
 export default styles;

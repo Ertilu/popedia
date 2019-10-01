@@ -26,14 +26,18 @@ const styles = StyleSheet.create({
 })
 
 export default class BottomBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user_id: '',
+      name: 'Account'
+    }
+
+    AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
+  }
 
   render() {
     const { navigation } = this.props
-    // {
-    //   icon: "apps",
-    //   text: 'Home',
-    //   image: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/1/11/20723472/20723472_8e83f5b5-b78a-477f-a28f-c416e5249cd0.png.webp'
-    // },
     const navs = [
       {
         icon: "heart",

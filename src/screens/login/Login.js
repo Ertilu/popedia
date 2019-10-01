@@ -51,22 +51,21 @@ class Login extends React.Component {
         .catch(err => {
           if (err.response) {
             if (err.response.data.validate == false) {
-              // Toast.show({
-              //   text: err.response.data.message,
-              //   duration: 2000,
-              //   position: 'top',
-              //   textStyle: { textAlign: 'center' }
-
-              // })
               Toast.show({
-                // text: err.response.data.message, // check if user !validation(otp)
                 text: 'Silahkan verifikasi kode',
                 duration: 2000,
                 position: 'bottom',
                 textStyle: { textAlign: 'center' }
               })
+              setTimeout(() => this.props.navigation.navigate("Otp", { email: this.state.email }), 2500)
+            } else {
+              Toast.show({
+                text: 'Email atau Password salah',
+                duration: 2000,
+                position: 'bottom',
+                textStyle: { textAlign: 'center' }
+              })
             }
-            setTimeout(() => this.props.navigation.navigate("Otp", { email: this.state.email }), 2500)
           } else if (err.request) {
             Toast.show({
               // text: JSON.stringify({ ...err.request }) // request from axios

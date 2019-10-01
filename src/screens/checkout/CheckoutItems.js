@@ -40,7 +40,7 @@ class CheckoutItems extends Component {
 						</View>
 						<View style={{padding:10, flex:1}}>
 							<Text style={{fontSize:14}}>{item.name}</Text>
-							<Text style={styles.productPrice}>{item.price}</Text>
+							<Text style={styles.productPrice}>{item.price * cartItems[0].quantity}</Text>
 						</View>
 					</CardItem>
 				</Card>

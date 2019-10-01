@@ -6,45 +6,50 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
-import { Button } from 'native-base'
+import { Button, Header, Left, Right, Icon, Title, Body, Footer } from 'native-base'
 import axios from 'axios'
-// import { getproducts } from '../Services/Axios/products';
-// import SimpleHeader from '../Components/Navigation/SimpleHeader';
-import { BASE_URL } from "../router";
-import { NavigationEvents } from 'react-navigation'
+// // import { getproducts } from '../Services/Axios/products';
+// // import SimpleHeader from '../Components/Navigation/SimpleHeader';
+import { BASE_URL } from "../../router";
 
-class Product extends Component {
-  state = {
-    products: [],
-  };
+class Wishlist extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: [],
+      user_id: '',
+    }
 
-  getProducts() {
-    axios
-      .get(
-        // `http://192.168.0.110:4869/api/products`
-        `${BASE_URL}/api/products`
-      )
-      .then(res =>
-        this.setState({
-          products: res.data.data
-        })
-      );
-    console.log(this.state);
-  }
-  async componentDidMount() {
-    await this.getProducts()
+    AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
   }
 
-
+  async componentDidMount() {    
+    axios 
+    .get(`${BASE_URL}/api/wishlists/${this.state.user_id}`)
+    .then(res =>
+      this.setState({
+        products: res.data.data[0].product_id
+      })
+    );
+    console.warn(this.state.products);
+  }
   render() {
-
+    const { navigation } = this.props;
     return (
       <View style={styles.listWrapper}>
-        <NavigationEvents
-          onDidFocus={() => this.getProducts()}
-        />
+          <Header style={{ backgroundColor: 'white' }}>
+              <Left>
+                  <Button onPress={() => this.props.navigation.navigate("Home")} transparent>
+                      <Icon style={{color: 'gray'}} name='arrow-back' />
+                      <Title style={{ color: 'gray', fontWeight: "600" }}>   Wishlist</Title>
+                  </Button>
+              </Left>
+              <Right>
+              </Right>
+          </Header>
         <FlatList
           data={this.state.products}
           renderItem={({ item }) =>
@@ -64,6 +69,16 @@ class Product extends Component {
                 <Text numberOfLines={1} style={styles.price}>
                   Rp {item.price}
                 </Text>
+              </View>
+              <View> 
+              <View style={styles.footer}>
+                <Button
+                  style={styles.buttonBuy} bordered
+                  onPress={() => navigation.navigate('Product', { item })}
+                >
+                  <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
+                </Button>
+              </View>
               </View>
             </Button>
           }
@@ -122,4 +137,4 @@ const styles = StyleSheet.create({
 // };
 
 // export default connect(null, addToCart)(Product);
-export default Product;
+export default Wishlist;

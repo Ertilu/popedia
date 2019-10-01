@@ -47,7 +47,7 @@ class Otp extends React.Component {
         axios.post(`${BASE_URL}/api/users/resend`, { email: this.state.email })
             .then(() => {
                 Toast.show({
-                    text: "New Code Has Been Send",
+                    text: "Kode baru sudah dikirim",
                     duration: 2000,
                     position: "top",
                     textStyle: { textAlign: "center" }
@@ -57,7 +57,6 @@ class Otp extends React.Component {
 
     getEmail() {
         this.setState({ email: this.props.navigation.getParam('email') })
-        alert(this.props.navigation.getParam('email'))
     }
 
     validate() {
@@ -72,7 +71,7 @@ class Otp extends React.Component {
                 })
                 .catch(err => {
                     Toast.show({
-                        text: JSON.stringify(err),
+                        text: err.response.data.message,
                         duration: 2000,
                         position: "top",
                         textStyle: { textAlign: "center" }
