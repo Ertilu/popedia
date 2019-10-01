@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {  Container, Header, Content, Card, CardItem, Text, Body, Left, Right, Title, Button, Icon, H3 } from "native-base";
-import { View, Image, TouchableOpacity } from 'react-native'
+import { View, Image, TouchableOpacity, AsyncStorage } from 'react-native'
 import styles from './styles';
 import Cart from './CheckoutContent';
 import { Grid, Col, Row } from 'react-native-easy-grid';
 import { connect } from 'react-redux'
 import axios from 'axios';
+
+import { BASE_URL } from "../../router";
 
 class Checkout extends Component {
   checkout = () => {
@@ -18,6 +20,22 @@ class Checkout extends Component {
                 }
             ] 
         })
+    })
+
+    const product_id = this.props.cartItems.map(data => data._id)
+    const quantity = this.props.cartItems.map(data => data.quantity)
+    const total = this.props.cartTotal
+
+    AsyncStorage.getItem('bindID').then(id => {
+      const data = {
+        user_id: id,
+        product_id,
+        quantity,
+        total
+      }
+      axios.post(`${BASE_URL}/api/histories`, data)
+      .then(() => alert('success boss'))
+      .catch(() => alert('gagal reeee'))
     })
 
     this.props.navigation.navigate("CheckoutSuccess");
