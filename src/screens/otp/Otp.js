@@ -66,6 +66,7 @@ class Otp extends React.Component {
         if (numReg.test(this.state.num)) {
             axios.post(`${BASE_URL}/api/users/verify`, { otp: this.state.num, email: this.state.email })
                 .then(res => {
+                    AsyncStorage.setItem('_id', res.data.user._id)
                     AsyncStorage.setItem('name', res.data.user.name)
                     this.props.navigation.navigate("Home")
                 })
