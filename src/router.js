@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
@@ -20,11 +19,14 @@ import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
 import Checkout from './screens/checkout/Checkout';
 import CheckoutSuccess from './screens/checkout/CheckoutSuccess';
+import SplashScreen from './screens/splashscreen';
 
 export const BASE_URL = 'http://ec2-54-204-153-133.compute-1.amazonaws.com:4869';
 
 const AppNavigator = createStackNavigator(
   {
+    // SplashScreen: { screen: SplashScreen },
+     
     Login: { screen: Login },
     Register: { screen: Register },
     Otp: { screen: Otp },
@@ -40,7 +42,7 @@ const AppNavigator = createStackNavigator(
     CheckoutSuccess: { screen: CheckoutSuccess },
   },
   {
-    initialRouteName: "Home",
+    // initialRouteName: "Home",
     headerMode: "none",
     navigationOptions: {
       gesturesEnabled: false,
@@ -72,12 +74,22 @@ const AppNavigator = createStackNavigator(
   }
 );
 
+const AuthNavigator = createSwitchNavigator(
+  {
+    App: AppNavigator,
+    SplashScreen,
+  },
+  {
+    initialRouteName: 'SplashScreen'
+  }
+)
 
-
-const AppContainer = createAppContainer(AppNavigator)
+const Navigation = createAppContainer(AuthNavigator)
+// const AppContainer = createAppContainer(AppNavigator)
 
 export default () => (
   <Root>
-    <AppContainer />
+    {/* <AppContainer /> */}
+    <Navigation />
   </Root>
 );

@@ -14,7 +14,10 @@ import {
   Footer,
   Header,
   Item,
-  TouchableOpacity
+  TouchableOpacity,
+  Thumbnail,
+  Card,
+  CardItem
 } from "native-base";
 
 import {
@@ -32,6 +35,8 @@ import { connect } from "react-redux";
 import { BASE_URL } from "../../router";
 import { addToCart } from '../../redux/actions/cartActions';
 import axios from 'axios'
+import { NavigationEvents } from 'react-navigation'
+
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -43,9 +48,17 @@ class Product extends React.Component {
       scrollY: new Animated.Value(0),
       cart: 0,
       user_id: '',
+      name: 'Account'
     }
 
     AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
+  }
+
+  getName = () => {
+    AsyncStorage.getItem('name')
+      .then(value => {
+        this.setState({ name: value })
+      })
   }
 
   deleteProduct = () => {
@@ -64,8 +77,6 @@ class Product extends React.Component {
         })
     })
   }
-
-
 
   handleScroll = (event) => {
     this.setState({
@@ -91,10 +102,8 @@ class Product extends React.Component {
     this.setState({ item: this.props.navigation.getParam('item') })
   }
 
-
-
   render() {
-    const { navigation, lang, cartItems } = this.props
+    const { navigation, cartItems } = this.props
     const { scrollY } = this.state
 
     const headerTranslate = scrollY.interpolate({
@@ -119,6 +128,9 @@ class Product extends React.Component {
 
     return (
       <Container style={styles.container} >
+        <NavigationEvents
+          onDidFocus={() => this.getName()}
+        />
         <Animated.View style={[styles.header, { transform: [{ translateY: headerTranslate }] }]}>
           <View>
             <Button
@@ -215,7 +227,25 @@ class Product extends React.Component {
 
           <View style={[styles.boxShadow]}>
             <View>
+
+              <List>
+                <ListItem avatar style={{ marginBottom: 10 }}>
+                  <Left>
+                    <Thumbnail source={{ uri: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/1/11/20723472/20723472_8e83f5b5-b78a-477f-a28f-c416e5249cd0.png.webp' }} />
+                  </Left>
+                  <Body>
+                    <Text>{this.state.name}</Text>
+                    <Text note>Depok, Indonesia</Text>
+                  </Body>
+                  <Right>
+                    <Text note>Top Seller</Text>
+                    <Text note>* * * * *</Text>
+                  </Right>
+                </ListItem>
+              </List>
+
               <Text style={styles.title}>Info Produk :</Text>
+
               {
                 info.map(item => (
                   <View style={styles.infoList}>
