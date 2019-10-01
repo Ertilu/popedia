@@ -20,7 +20,6 @@ export default class TypographyExample extends Component {
 
   }
 
-
   getHistories = () => {
     AsyncStorage.getItem('bindID').then(id => {
       axios.get(`${BASE_URL}/api/histories/${id}`).
