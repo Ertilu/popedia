@@ -14,7 +14,7 @@ import {
   Footer,
   Header,
   Item,
-  TouchableOpacity
+  Badge
 } from "native-base";
 
 import {
@@ -174,6 +174,9 @@ class Product extends React.Component {
                         width: '100%',
                       }}
                     />
+                    <Badge primary style={styles.badge}>
+                      <Icon name="heart" style={styles.badgeIcon} />
+                    </Badge>
                   </View>
                 )
               })}
