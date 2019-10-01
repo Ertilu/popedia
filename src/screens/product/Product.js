@@ -23,7 +23,8 @@ import {
   Image,
   Animated,
   FlatList,
-  AsyncStorage
+  AsyncStorage,
+  TouchableOpacity
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
@@ -65,8 +66,6 @@ class Product extends React.Component {
     })
   }
 
-
-
   handleScroll = (event) => {
     this.setState({
       scrollY: event.nativeEvent.contentOffset.y
@@ -91,7 +90,23 @@ class Product extends React.Component {
     this.setState({ item: this.props.navigation.getParam('item') })
   }
 
-
+  addWishlist = () => {
+    const item = this.props.navigation.getParam('item', {});
+    if (this.state.user_id == null) {
+      this.props.navigation.navigate("Login")
+    } else {    
+      axios 
+      .post(`${BASE_URL}/api/wishlists`, 
+        {
+          "user_id": this.state.user_id,
+          "product_id": [
+            item._id  
+          ]
+        }
+      )
+      alert('Berhasil menambah ke wishlist produk ' + item.name);
+    }
+  }
 
   render() {
     const { navigation, lang, cartItems } = this.props
@@ -174,9 +189,16 @@ class Product extends React.Component {
                         width: '100%',
                       }}
                     />
-                    <Badge primary style={styles.badge}>
-                      <Icon name="heart" style={styles.badgeIcon} />
-                    </Badge>
+                    <TouchableOpacity onPress={this.addWishlist}>
+                      <View>
+                        <Text>
+                          
+                        </Text>
+                        <Badge primary style={styles.badge}>
+                          <Icon name="heart" style={styles.badgeIcon} />
+                        </Badge>
+                      </View>
+                    </TouchableOpacity>
                   </View>
                 )
               })}

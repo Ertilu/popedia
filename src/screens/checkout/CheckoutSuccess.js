@@ -14,7 +14,7 @@ export default class Maintenance extends Component {
                 <View style={styles.imageContainer}>
                   <Image
                     style={styles.image}
-                    source={{ uri: 'https://media3.giphy.com/media/fikm2KlbCavX7sNQBu/source.gif' }}
+                    source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx5mohd6aeOhZG6rQZIk8pi7dIi9bcML_d0329pn6TiPp8tvvu' }}
                   />
                 </View>
                 <Text style={styles.text}>

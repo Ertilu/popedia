@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 import { Button, Header, Left, Right, Icon, Title, Body, Footer } from 'native-base'
 import axios from 'axios'
@@ -15,21 +16,25 @@ import axios from 'axios'
 import { BASE_URL } from "../../router";
 
 class Wishlist extends Component {
-  state = {
-    products: [],
-  };
-  async componentDidMount() {
-    await axios
-      .get(
-        // `http://192.168.0.110:4869/api/products`
-        `${BASE_URL}/api/products`
-      )
-      .then(res =>
-        this.setState({
-          products: res.data.data
-        })
-      );
-    console.log(this.state);
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: [],
+      user_id: '',
+    }
+
+    AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
+  }
+
+  async componentDidMount() {    
+    axios 
+    .get(`${BASE_URL}/api/wishlists/${this.state.user_id}`)
+    .then(res =>
+      this.setState({
+        products: res.data.data[0].product_id
+      })
+    );
+    console.warn(this.state.products);
   }
   render() {
     const { navigation } = this.props;

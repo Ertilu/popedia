@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { View, StyleSheet, TouchableOpacity, Animated } from 'react-native'
+import React, { Component, useState } from 'react'
+import { View, StyleSheet, TouchableOpacity, Animated, AsyncStorage } from 'react-native'
 import { Container, Header, Button, Text, Icon, Left, Right, Input, Item } from 'native-base'
 
 const styles = StyleSheet.create({
@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
 })
 
 const HeaderComponent = (props) => {
-
+  const [idUser, setIdUser] = useState('');
+  
   const {
     navigation,
     backgroundColor,
@@ -22,6 +23,16 @@ const HeaderComponent = (props) => {
     onScroll,
     searchColor
   } = props
+
+  const user_id =  AsyncStorage.getItem('bindID')
+
+  const checkUser = () => {
+    if(user_id._55 == null) {
+      navigation.navigate("Login")
+    } else {
+      navigation.navigate("Wishlist")
+    }
+  }
 
   return (
     <Header
@@ -56,7 +67,7 @@ const HeaderComponent = (props) => {
           <Input placeholderTextColor='#B3BAC3' style={{ fontSize: 16 }} placeholder="Cari di Popedia" />
         </Animated.View>
         <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity onPress={() => navigation.navigate("Wishlist")}>
+          <TouchableOpacity onPress={checkUser}>
             <Icon style={[styles.button, { color }]} name='heart' />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("404")}>

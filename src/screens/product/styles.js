@@ -135,10 +135,13 @@ const styles  = StyleSheet.create({
 	},
 	badge: {
 		position: "absolute",
-		bottom: 30,
+		bottom: 20,
 		left: 350,
 		backgroundColor: 'white',
 		borderColor: 'black',
 	},
+	badgeIcon: {
+		fontSize: 30,
+	}
 });
 export default styles;
