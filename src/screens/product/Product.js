@@ -99,14 +99,14 @@ class Product extends React.Component {
       .post(`${BASE_URL}/api/wishlists`, 
         {
           "user_id": this.state.user_id,
-          "product_id": [
-            item._id  
-          ]
+          "product_id": item._id  
         }
-      )
+      ) 
+      .then(() => alert('success boss'))
+      .catch(() => alert('gagal reeee'))
       alert('Berhasil menambah ke wishlist produk ' + item.name);
     }
-  }
+  } 
 
   render() {
     const { navigation, lang, cartItems } = this.props

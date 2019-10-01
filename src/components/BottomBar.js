@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
 })
 
 export default class BottomBar extends Component {
-
   render() {
     const { navigation } = this.props
     // {
