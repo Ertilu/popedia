@@ -44,8 +44,8 @@ class Cart extends Component {
 					<Footer style={styles.footerWrapper}>
 						<Row>
 							<Col>
-								<Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga (2 Barang)</Text>
-								<Text style={{fontSize:15, color:'#ff5722'}}>Rp 14.399.000</Text>
+								<Text style={{fontSize:11, color:'#bdbdbd'}}>Total Harga ({(cartItems).length} Barang)</Text>
+								<Text style={{fontSize:15, color:'#ff5722'}}>Rp {cartTotal}</Text>
 							</Col>
 							<Col>
 							<TouchableOpacity onPress={() => this.props.navigation.navigate("Checkout")}>

@@ -48,7 +48,7 @@ class CartContent extends Component {
 				<FlatList 
                  	data={cartItems}
 					renderItem={({item, index}) => <CartItems item={item} index={index} /> }
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => item._id}
 					ItemSeparatorComponent= {()=> <View style={{height:0.3, backgroundColor:'#34495e90'}}/> }
 				/>
 			</Content>
