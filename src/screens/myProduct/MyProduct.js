@@ -11,25 +11,31 @@ import MyCard from './MyCard'
 export default class ListThumbnailExample extends Component {
 
     state = {
-    	products: []
+    	products: [],
+      error: false,
+      errorMessage: '',
     }
 
     componentDidMount() {
 			AsyncStorage.getItem('bindID', (err, bindID) => {
         axios.get(BASE_URL + '/api/products/user/' + bindID)
         .then(res => {
+          this.setState({error: false})
           this.setState({products: res.data.data})
-          alert(JSON.stringify(data))
         })
         .catch(err => {
-          alert(err.response.message)
-          alert(JSON.stringify(user_id))
+          if (err.response) {
+            this.setState({error: true})
+            this.setState({errorMessage: err.response.message})
+          } else if (err.request) {
+            this.setState({error: true})
+            this.setState({errorMessage: 'Terjadi Masalah Koneksi'})
+          } else {
+            this.setState({error: true})
+            this.setState({errorMessage: err.message})
+          }
         })
-      })
-
-
-      // alert(bindID)
-    	
+      })  
     }
 
   render() {
@@ -52,11 +58,13 @@ export default class ListThumbnailExample extends Component {
 				</Header>
 
 				<Content>
-					<FlatList
-            data={this.state.products}
-            renderItem={({item}) => <MyCard product={item} navigate={this.props.navigation.navigate} />}
-            keyExtractor={item => item._id.toString()}
-          />
+					{ this.state.error === false ?
+            <FlatList
+              data={this.state.products}
+              renderItem={({item}) => <MyCard product={item} navigate={this.props.navigation.navigate} />}
+              keyExtractor={item => item._id.toString()}
+            /> : <Text>{this.state.errorMessage}</Text>
+          }
 				</Content>
 			</Container>
     )
