@@ -70,10 +70,10 @@ const HeaderComponent = (props) => {
           <TouchableOpacity onPress={checkUser}>
             <Icon style={[styles.button, { color }]} name='heart' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("404")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Maintenance")}>
             <Icon style={[styles.button, { color }]} name='mail' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("404")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Maintenance")}>
             <Icon style={[styles.button, { color }]} name='notifications' />
           </TouchableOpacity>
         </View>

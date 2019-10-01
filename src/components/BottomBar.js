@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity, AsyncStorage } from 'react-native'
 import { Container, Footer, FooterTab, Button, Text, Icon } from 'native-base'
 
 const styles = StyleSheet.create({
@@ -32,8 +32,19 @@ export default class BottomBar extends Component {
       user_id: '',
       name: 'Account'
     }
+  }
 
-    AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
+  profile = () => {
+    AsyncStorage.getItem('bindID').then(data => {
+      if (data === null) {
+        // alert('not else ' + data)
+        this.props.navigation.navigate("Login")
+      } else {
+        // alert('else ' + data)
+        this.props.navigation.navigate("Profile")
+      }
+    })
+
   }
 
   render() {
@@ -91,11 +102,12 @@ export default class BottomBar extends Component {
               <Text numberOfLines={1} style={styles.text}>Keranjang</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity onPress={() => (this.profile())}>
             <View
               style={styles.button}
             >
               <Image
+                onPress={this.profile}
                 source={{ uri: 'https://ecs7.tokopedia.net/img/cache/100-square/attachment/2019/1/9/20723472/20723472_a42a010b-bd35-4279-8bea-84e7bb1bcfc0.png.webp' }}
                 style={styles.menuIcon}
               />

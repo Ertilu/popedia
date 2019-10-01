@@ -52,9 +52,9 @@ export default class CardImageExample extends Component {
                                     <Text note>Verify</Text>
                                 </Body>
                             </Left>
-                            <Right>
+                            {/* <Right>
                                 <Button bordered success onPress={() => navigation.navigate("AddProduct")}><Text note style={{ fontSize: 10, color: '#2aaa4d' }}>Tambah produk</Text></Button>
-                            </Right>
+                            </Right> */}
                         </CardItem>
                         <CardItem>
                             <Left>
@@ -89,11 +89,11 @@ export default class CardImageExample extends Component {
                     </CardItem>
                     <CardItem>
                         <Body>
-                            <Text  onPress={() => navigation.navigate("History")}>Menuggu pembayaran</Text>
-                            <Text note  onPress={() => navigation.navigate("History")}>Semua transaksi yang belum terbayar</Text>
+                            <Text onPress={() => navigation.navigate("History")}>Menuggu pembayaran</Text>
+                            <Text note onPress={() => navigation.navigate("History")}>Semua transaksi yang belum terbayar</Text>
                         </Body>
                         <Right>
-                            <Icon name="arrow-forward"  onPress={() => navigation.navigate("History")} />
+                            <Icon name="arrow-forward" onPress={() => navigation.navigate("History")} />
                         </Right>
                     </CardItem>
 

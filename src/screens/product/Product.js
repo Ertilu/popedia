@@ -17,7 +17,8 @@ import {
   Thumbnail,
   Card,
   CardItem,
-  Badge
+  Badge,
+  Toast
 } from "native-base";
 
 import {
@@ -65,8 +66,7 @@ class Product extends React.Component {
     const item = this.props.navigation.getParam('item')
 
     Promise.all(item).then(() => {
-      alert(item._id)
-      axios.delete(`${BASE_URL}/api/products/${_id}`)
+      axios.delete(`${BASE_URL}/api/products/${item._id}`)
         .then(res => {
           Toast.show({
             text: 'Hapus data berhasil',
@@ -74,7 +74,9 @@ class Product extends React.Component {
             position: 'bottom',
             textStyle: { textAlign: 'center' }
           })
+          setTimeout(() => this.props.navigation.goBack(), 2500)
         })
+        .catch(err => alert('kook  malah ke sini mas'))
     })
   }
 
@@ -100,6 +102,24 @@ class Product extends React.Component {
 
   componentDidMount() {
     this.setState({ item: this.props.navigation.getParam('item') })
+  }
+
+  addWishlist = () => {
+    const item = this.props.navigation.getParam('item', {});
+    if (this.state.user_id == null) {
+      this.props.navigation.navigate("Login")
+    } else {
+      axios
+        .post(`${BASE_URL}/api/wishlists`,
+          {
+            "user_id": this.state.user_id,
+            "product_id": item._id
+          }
+        )
+        .then(() => alert('success boss'))
+        .catch(() => alert('gagal reeee'))
+      alert('Berhasil menambah ke wishlist produk ' + item.name);
+    }
   }
 
   render() {

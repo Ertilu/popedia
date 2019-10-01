@@ -28,15 +28,17 @@ export const BASE_URL = 'http://ec2-54-204-153-133.compute-1.amazonaws.com:4869'
 const AppNavigator = createStackNavigator(
   {
     // SplashScreen: { screen: SplashScreen },
-
+    Home: { screen: Home },
     Login: { screen: Login },
+    Profile: { screen: Profile },
+
     Register: { screen: Register },
     Otp: { screen: Otp },
     ForgotPassword: { screen: ForgotPassword },
-    Profile: { screen: Profile },
+
     AddProduct: { screen: AddProduct },
     MyProduct: { screen: MyProduct },
-    Home: { screen: Home },
+
     Product: { screen: Product },
     Maintenance: { screen: Maintenance },
     Cart: { screen: Cart },

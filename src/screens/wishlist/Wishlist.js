@@ -19,22 +19,35 @@ class Wishlist extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [],
+      whislists: [],
       user_id: '',
+      isLoading: true,
     }
-
     AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
   }
 
   async componentDidMount() {    
-    axios 
-    .get(`${BASE_URL}/api/wishlists/${this.state.user_id}`)
-    .then(res =>
+    const queryView = `${BASE_URL}/api/whislists/${this.state.user_id}`
+    await axios 
+    // .get("https://randomproduct.me/api/?results=5")
+    .get(queryView)
+    .then(response =>
+      response.data.data[0].product_id.map(whislist => ({
+        id: `${whislist._id}`,
+        name: `${whislist.name}`,
+        image: `${whislist.image}`,
+        price: `${whislist.price}`,
+        user_id: `${whislist.user_id}`
+      }))
+    )
+    .then(whislists => {
       this.setState({
-        products: res.data.data[0].product_id
+        whislists,
+        isLoading: false
       })
-    );
-    console.warn(this.state.products);
+    })
+    .catch(error => this.setState({ error, isLoading: false }));
+    console.warn(this.state.whislists.name);
   }
   render() {
     const { navigation } = this.props;
@@ -51,7 +64,7 @@ class Wishlist extends Component {
               </Right>
           </Header>
         <FlatList
-          data={this.state.products}
+          data={this.state.whislists}
           renderItem={({ item }) =>
             <Button
               transparent

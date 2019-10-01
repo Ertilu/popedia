@@ -94,7 +94,7 @@ class Login extends React.Component {
         <Header androidStatusBarColor={'#2aaa4d'} style={styles.header}>
           <Left>
             <Button onPress={() => navigation.goBack()} transparent>
-              <Icon style={styles.textHeader} name='arrow-back' />
+              <Icon style={styles.textHeader} name='arrow-back' onPress={() => navigation.navigate("Home")} />
             </Button>
           </Left>
           <Body>
