@@ -132,6 +132,13 @@ const styles  = StyleSheet.create({
 		color: 'gray',
 		fontWeight: "600",
 		textAlign: 'center'
-	}
+	},
+	badge: {
+		position: "absolute",
+		bottom: 30,
+		left: 350,
+		backgroundColor: 'white',
+		borderColor: 'black',
+	},
 });
 export default styles;

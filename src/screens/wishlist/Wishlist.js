@@ -8,7 +8,7 @@ import {
   TextInput,
   Image
 } from 'react-native';
-import { Button, Header, Left, Right, Icon, Title, Body } from 'native-base'
+import { Button, Header, Left, Right, Icon, Title, Body, Footer } from 'native-base'
 import axios from 'axios'
 // // import { getproducts } from '../Services/Axios/products';
 // // import SimpleHeader from '../Components/Navigation/SimpleHeader';
@@ -31,16 +31,15 @@ class Wishlist extends Component {
       );
     console.log(this.state);
   }
-
   render() {
-
+    const { navigation } = this.props;
     return (
       <View style={styles.listWrapper}>
           <Header style={{ backgroundColor: 'white' }}>
               <Left>
-                  <Button onPress={() => navigation.navigate("Home")} transparent>
-                      <Icon style={styles.textHeader} name='arrow-back' />
-                      <Title style={{ color: 'gray', fontWeight: "600" }}>   Kembali</Title>
+                  <Button onPress={() => this.props.navigation.navigate("Home")} transparent>
+                      <Icon style={{color: 'gray'}} name='arrow-back' />
+                      <Title style={{ color: 'gray', fontWeight: "600" }}>   Wishlist</Title>
                   </Button>
               </Left>
               <Right>
@@ -65,6 +64,16 @@ class Wishlist extends Component {
                 <Text numberOfLines={1} style={styles.price}>
                   Rp {item.price}
                 </Text>
+              </View>
+              <View> 
+              <View style={styles.footer}>
+                <Button
+                  style={styles.buttonBuy} bordered
+                  onPress={() => navigation.navigate('Product', { item })}
+                >
+                  <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
+                </Button>
+              </View>
               </View>
             </Button>
           }
