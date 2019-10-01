@@ -33,11 +33,12 @@ export default class ListThumbnailExample extends Component {
     }
 
     render() {
+        const { navigation } = this.props
         return (
             <Container>
                 <Header style={{ backgroundColor: 'white' }}>
                     <Left >
-                        <Button transparent >
+                        <Button transparent onPress={() => navigation.goBack()}>
                             <Icon style={{ color: 'gray' }} name='arrow-back' />
                         </Button>
                     </Left>
@@ -46,7 +47,7 @@ export default class ListThumbnailExample extends Component {
                     </Body>
                     <Right>
                         <Button transparent >
-                            <Icon style={{ color: 'gray' }} name='heart' />
+                            <Icon style={{ color: 'gray' }} onPress={() => navigation.navigate("AddProduct")} name='add' />
                         </Button>
                     </Right>
                 </Header>

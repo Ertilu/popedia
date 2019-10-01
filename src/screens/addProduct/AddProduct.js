@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Platform, TouchableOpacity } from "react-native";
+import { Image, Platform, TouchableOpacity, AsyncStorage } from "react-native";
 import {
     Container,
     Content,
@@ -22,19 +22,32 @@ import {
 import { BASE_URL } from '../../router'
 import ImagePicker from 'react-native-image-picker';
 import styles from './style'
+import axios from 'axios'
 
 class AddProduct extends React.Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             num: '',
             numValidate: true,
             code: '',
             filePath: {},
             selected: undefined,
-            categories: []
+            categories: [],
+
+            name: '',
+            image: {},
+            category_id: "5d8c05e5972fba12a8c1c956",
+            description: '',
+            quantity: 0,
+            price: 0,
+            user_id: '',
+
         }
+        AsyncStorage.getItem('bindID').then(data => {
+            this.setState({ user_id: data })
+        })
     }
 
     onValueChange(value) {
@@ -43,17 +56,45 @@ class AddProduct extends React.Component {
         });
     }
 
-    onChangeHandler(number) {
-        this.setState({ code: number })
+    onChangeHandler(text, key) {
+        this.setState({ [key]: text })
     }
 
     validate() {
         // const nameReg = /^[a-zA-Z]$/
         // const quantityReg = /^[0-9]$/
-        const nameReg = /^[a-zA-Z]$/
+        const nameReg = /^$/
+        const { name, category_id, quantity, image, description, price, user_id } = this.state
 
         if (nameReg.test(this.state.code)) {
-            this.props.navigation.navigate("MyProduct")
+
+            const data = new FormData()
+            data.append('name', name)
+            data.append('category_id', category_id)
+            data.append('quantity', quantity)
+            data.append('image', { uri: image.uri, name: image.fileName, type: image.type })
+            data.append('description', description)
+            data.append('price', price)
+            data.append('user_id', user_id)
+
+            axios.post(`${BASE_URL}/api/products`, data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    this.props.navigation.navigate("MyProduct")
+                })
+                .catch(err => {
+
+                    alert(JSON.stringify(this.state))
+                    Toast.show({
+                        text: err.response.message,
+                        duration: 2000,
+                        position: 'top',
+                        textStyle: { textAlign: "center" }
+                    })
+                })
         } else {
             Toast.show({
                 text: "Isi dengan benar",
@@ -69,7 +110,7 @@ class AddProduct extends React.Component {
             title: 'Pilih Gambar',
             storageOptions: {
                 skipBackup: true,
-                path: 'images',
+                path: 'image',
             },
         };
         ImagePicker.showImagePicker(options, response => {
@@ -80,7 +121,7 @@ class AddProduct extends React.Component {
             } else {
                 let source = response;
                 this.setState({
-                    filePath: source,
+                    image: source,
                 });
             }
         });
@@ -103,7 +144,7 @@ class AddProduct extends React.Component {
                 <Content style={styles.content}>
                     <Form >
                         <Image
-                            source={{ uri: this.state.filePath.uri }}
+                            source={{ uri: this.state.image.uri }}
                             style={{ width: 300, alignSelf: 'center', marginBottom: '5%', marginTop: '5%', borderWidth: 2, borderColor: 'gray', height: 200, borderRadius: 10 }}
                         />
                         <Button
@@ -113,7 +154,7 @@ class AddProduct extends React.Component {
                         </Button>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>nama</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                            <Input onChangeText={(text) => this.onChangeHandler(text, 'name')} />
                         </Item>
                         <Form >
                             <Picker
@@ -122,26 +163,27 @@ class AddProduct extends React.Component {
                                 selectedValue={this.state.selected}
                                 onValueChange={this.onValueChange.bind(this)}
                                 style={styles.registerForm}
+                                onChangeText={(text) => this.onChangeHandler(text, 'category')}
                             >
                                 <Picker.Item label="-- Pilih kategori --" />
-                                <Picker.Item label="Wallet" value="key0" />
-                                <Picker.Item label="ATM Card" value="key1" />
-                                <Picker.Item label="Debit Card" value="key2" />
-                                <Picker.Item label="Credit Card" value="key3" />
-                                <Picker.Item label="Net Banking" value="key4" />
+                                <Picker.Item label="Olahraga" value="1" />
+                                <Picker.Item label="Peralatan Dapur" value="2" />
+                                <Picker.Item label="Gaming" value="3" />
+                                <Picker.Item label="Pakaian" value="4" />
+                                <Picker.Item label="Makanan" value="5" />
                             </Picker>
                         </Form>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>kuantitas</Label>
-                            <Input keyboardType='numeric' />
+                            <Input keyboardType='numeric' onChangeText={(text) => this.onChangeHandler(text, 'quantity')} />
                         </Item>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>deskripsi</Label>
-                            <Input onChangeText={(number) => this.onChangeHandler(number)} />
+                            <Input onChangeText={(text) => this.onChangeHandler(text, 'description')} />
                         </Item>
                         <Item floatingLabel>
                             <Label style={styles.registerForm}>price</Label>
-                            <Input keyboardType='number-pad' onChangeText={(number) => this.onChangeHandler(number)} />
+                            <Input keyboardType='number-pad' onChangeText={(text) => this.onChangeHandler(text, 'price')} />
                         </Item>
                     </Form>
 

@@ -90,7 +90,6 @@ class Login extends React.Component {
     }
   }
 
-
   render() {
     const { navigation } = this.props
     return (

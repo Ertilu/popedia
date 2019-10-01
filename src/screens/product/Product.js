@@ -14,6 +14,7 @@ import {
   Footer,
   Header,
   Item,
+  TouchableOpacity
 } from "native-base";
 
 import {
@@ -21,7 +22,8 @@ import {
   View,
   Image,
   Animated,
-  FlatList
+  FlatList,
+  AsyncStorage
 } from "react-native";
 import Swiper from 'react-native-swiper';
 
@@ -29,6 +31,7 @@ import styles from "./styles";
 import { connect } from "react-redux";
 import { BASE_URL } from "../../router";
 import { addToCart } from '../../redux/actions/cartActions';
+import axios from 'axios'
 
 const HEADER_HEIGHT = 60
 const MAX_SCROLL_OFFSET = 400
@@ -38,9 +41,31 @@ class Product extends React.Component {
     super(props)
     this.state = {
       scrollY: new Animated.Value(0),
-      cart: 0
+      cart: 0,
+      user_id: '',
     }
+
+    AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
   }
+
+  deleteProduct = () => {
+    const item = this.props.navigation.getParam('item')
+
+    Promise.all(item).then(() => {
+      alert(item._id)
+      axios.delete(`${BASE_URL}/api/products/${_id}`)
+        .then(res => {
+          Toast.show({
+            text: 'Hapus data berhasil',
+            duration: 2000,
+            position: 'bottom',
+            textStyle: { textAlign: 'center' }
+          })
+        })
+    })
+  }
+
+
 
   handleScroll = (event) => {
     this.setState({
@@ -79,7 +104,7 @@ class Product extends React.Component {
     const description = item.description ? item.description.replace(/↵/gi, '\n') : '';
 
     return (
-      <Container style={styles.container}>
+      <Container style={styles.container} >
         <Animated.View style={[styles.header, { transform: [{ translateY: headerTranslate }] }]}>
           <View>
             <Button
@@ -93,7 +118,7 @@ class Product extends React.Component {
             <Button transparent>
               <Icon style={styles.icon} name="share" />
             </Button>
-            <Button transparent onPress={() => this.props.navigation.navigate('Cart')}s>
+            <Button transparent onPress={() => this.props.navigation.navigate('Cart')} s>
               <View style={styles.cartView}><Text style={styles.cartText}>{(cartItems).length}</Text></View>
               <Icon style={styles.icon} name="cart" />
             </Button>
@@ -192,29 +217,40 @@ class Product extends React.Component {
               <Text style={styles.description}>{description}</Text>
             </View>
           </View>
-
         </Content>
 
-        <Footer>
-          <View style={styles.footer}>
-            <Button style={{ borderColor: 'lightgray', borderRadius: 5 }} bordered>
-              <Icon style={{ color: 'gray' }} name='chatbubbles' />
-            </Button>
-            <Button
-              style={styles.buttonBuy} bordered
-              onPress={() => navigation.navigate("Cart")}
-            >
-              <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
-            </Button>
-            <Button
-              style={styles.buttonCart}
-              onPress={this.addItemsToCart}
-            >
-              <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
-            </Button>
-          </View>
-        </Footer>
-      </Container>
+        {this.state.user_id == item.user_id._id ?
+          <Footer>
+            <View style={styles.footer}>
+              <Button style={styles.buttonBuy} bordered>
+                <Text style={{ color: 'red', fontSize: 12 }} uppercase={false} onPress={() => this.deleteProduct()}>Hapus produk</Text>
+              </Button>
+            </View>
+          </Footer>
+          :
+          <Footer>
+            <View style={styles.footer}>
+              <Button style={{ borderColor: 'lightgray', borderRadius: 5 }} bordered>
+                <Icon style={{ color: 'gray' }} name='chatbubbles' />
+              </Button>
+              <Button
+                style={styles.buttonBuy} bordered
+                onPress={() => navigation.navigate("Cart")}
+              >
+                <Text style={{ color: '#FF582F', fontSize: 12 }} uppercase={false}>Beli</Text>
+              </Button>
+              <Button
+                style={styles.buttonCart}
+                onPress={this.addItemsToCart}
+              >
+                <Text style={{ fontSize: 12 }} uppercase={false}>Tambah Keranjang</Text>
+              </Button>
+            </View>
+          </Footer>
+        }
+
+
+      </Container >
     );
   }
 }
@@ -223,5 +259,5 @@ const mapStateToProps = (state) => ({
   cartItems: state.cart.cart
 });
 
-export default connect(mapStateToProps, {addToCart})(Product);
-// export default Product; 
+export default connect(mapStateToProps, { addToCart })(Product);
+// export default Product;
