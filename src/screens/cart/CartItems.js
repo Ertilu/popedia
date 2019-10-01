@@ -59,13 +59,14 @@ class CartItems extends Component {
 
 	render() {
 		const { item } = this.props;
-
+		// const name = (this.props.item.user_id.name == 'null') ? 'Official Store Popedia' : this.props.item.user_id.name; 
+	
 		return (
 			<Content>
 				<Card style={styles.cardFull}>
 					<View style={styles.topInfo}>
 						<Text style={{flex:0.8}}>
-							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>{item.user_id.name}</Text>
+							<Text style={{color:'#bdbdbd', fontSize:12}}>Penjual:</Text> <Text style={{fontSize:12}}>Official Store Popedia</Text>
 						</Text>
 						<Icon type='FontAwesome' name='trash-o' style={styles.trashIcon} />
 					</View>

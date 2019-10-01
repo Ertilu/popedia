@@ -19,6 +19,8 @@ class Checkout extends Component {
             ] 
         })
     })
+
+    this.props.navigation.navigate("CheckoutSuccess");
   }
   render() {
     const { cartItems, navigation, cartTotal } = this.props;    

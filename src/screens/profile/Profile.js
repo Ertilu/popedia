@@ -89,11 +89,11 @@ export default class CardImageExample extends Component {
                     </CardItem>
                     <CardItem>
                         <Body>
-                            <Text>Menuggu pembayaran</Text>
-                            <Text note>Semua transaksi yang belum terbayar</Text>
+                            <Text  onPress={() => navigation.navigate("History")}>Menuggu pembayaran</Text>
+                            <Text note  onPress={() => navigation.navigate("History")}>Semua transaksi yang belum terbayar</Text>
                         </Body>
                         <Right>
-                            <Icon name="arrow-forward" />
+                            <Icon name="arrow-forward"  onPress={() => navigation.navigate("History")} />
                         </Right>
                     </CardItem>
 

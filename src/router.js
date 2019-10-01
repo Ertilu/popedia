@@ -20,6 +20,8 @@ import Maintenance from './screens/maintenance/404';
 import Cart from './screens/cart/Cart';
 import Checkout from './screens/checkout/Checkout';
 import CheckoutSuccess from './screens/checkout/CheckoutSuccess';
+import History from './screens/history/History';
+import Wishlist from './screens/wishlist/Wishlist';
 
 export const BASE_URL = 'http://ec2-54-204-153-133.compute-1.amazonaws.com:4869';
 
@@ -38,6 +40,8 @@ const AppNavigator = createStackNavigator(
     Cart: { screen: Cart },
     Checkout: { screen: Checkout },
     CheckoutSuccess: { screen: CheckoutSuccess },
+    History: { screen: History },
+    Wishlist: { screen: Wishlist },
   },
   {
     initialRouteName: "Home",

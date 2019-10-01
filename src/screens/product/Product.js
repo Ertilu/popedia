@@ -262,9 +262,7 @@ class Product extends React.Component {
             </View>
           </Footer>
         }
-
-
-      </Container >
+      </Container>
     );
   }
 }

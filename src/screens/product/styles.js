@@ -6,8 +6,16 @@ const styles  = StyleSheet.create({
 	},
 	icon: {
 		color: 'white',
-		fontSize: 25
+		fontSize: 25,
 	},
+	goBack: {
+		textAlign: 'left',
+		marginRight: 200
+	},
+	textHeader: {
+        color: 'gray',
+        fontWeight: "600"
+    },
 	cartView: {
 		position: "absolute",
 		left: 15,
