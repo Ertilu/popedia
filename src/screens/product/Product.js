@@ -116,8 +116,8 @@ class Product extends React.Component {
             "product_id": item._id
           }
         )
-        .then(() => alert('success boss'))
-        .catch(() => alert('gagal reeee'))
+        .then(() => console.log('success boss'))
+        .catch(() => console.log('gagal reeee'))
       alert('Berhasil menambah ke wishlist produk ' + item.name);
     }
   }
@@ -194,29 +194,27 @@ class Product extends React.Component {
             >
               {images.map((image, i) => {
                 return (
-                  <View
-                    style={{ flex: .9, justifyContent: 'flex-start' }}
-                    key={i}
-                  >
-                    <Image
-                      source={{ uri: `${BASE_URL}` + item.image }}
-                      style={{
-                        flex: 1,
-                        height: '100%',
-                        width: '100%',
-                      }}
-                    />
-                    <TouchableOpacity onPress={this.addWishlist}>
-                      <View>
-                        <Text>
+                  <Container>
+                    <View
+                      style={{ flex: .9, justifyContent: 'flex-start' }}
+                      key={i}
+                    >
+                      <Image
+                        source={{ uri: `${BASE_URL}` + item.image }}
+                        style={{
+                          flex: 1,
+                          height: '100%',
+                          width: '100%',
+                        }}
+                      />
+                    </View>
+                    <View style={{ marginRight: 200 }}>
+                      <TouchableOpacity onPress={this.addWishlist}>
+                        <Icon name="heart" style={{ color: 'gray' }} />
+                      </TouchableOpacity>
+                    </View>
 
-                        </Text>
-                        <Badge primary style={styles.badge}>
-                          <Icon name="heart" style={styles.badgeIcon} />
-                        </Badge>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
+                  </Container>
                 )
               })}
             </Swiper>

@@ -89,7 +89,7 @@ export default class CardImageExample extends Component {
                     </CardItem>
                     <CardItem>
                         <Body>
-                            <Text onPress={() => navigation.navigate("History")}>Menuggu pembayaran</Text>
+                            <Text onPress={() => navigation.navigate("History")}>Riwayat pembayaran </Text>
                             <Text note onPress={() => navigation.navigate("History")}>Semua transaksi yang belum terbayar</Text>
                         </Body>
                         <Right>

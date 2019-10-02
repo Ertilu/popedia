@@ -27,54 +27,56 @@ class Wishlist extends Component {
     AsyncStorage.getItem('bindID').then(data => this.setState({ user_id: data }))
   }
 
-  componentDidMount() {    
-    this.getWishlists();  
+  componentDidMount() {
+    this.getWishlists();
   }
 
   getWishlists = () => {
     const queryView = `${BASE_URL}/api/wishlists/${this.state.user_id}`
-    axios 
-    .get(queryView)
-    .then(res => {
-      this.setState({wishlists: res.data.data})
-    })
+    axios
+      .get(queryView)
+      .then(res => {
+        this.setState({ wishlists: res.data.data })
+      })
   }
 
   delete = id => {
     Alert.alert(
-			'Konfirmasi',
-			'Apa kamu yakin ingin menghapus produk ini dari keranjang?',
-			[
-			{text: 'No', onPress:() => console.log('Cancel Pressed'), style: 'cancel'},
-			{text: 'Yes', onPress:() => axios
-      .delete(`http://ec2-54-204-153-133.compute-1.amazonaws.com:4869/api/wishlists/${id}`)
-      .then(
-        alert('Wishlist telah dihapus'),
-        this.props.navigation.navigate("Home")
-      )
-      .catch(error => alert('error gan'))},
-			],
-			{ cancelable: true}
-		) 
+      'Konfirmasi',
+      'Apa kamu yakin ingin menghapus produk ini dari keranjang?',
+      [
+        { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+        {
+          text: 'Yes', onPress: () => axios
+            .delete(`http://ec2-54-204-153-133.compute-1.amazonaws.com:4869/api/wishlists/${id}`)
+            .then(
+              alert('Wishlist telah dihapus'),
+              this.props.navigation.navigate("Home")
+            )
+            .catch(error => alert('error gan'))
+        },
+      ],
+      { cancelable: true }
+    )
   }
 
   render() {
     const { navigation } = this.props;
     return (
       <View style={styles.listWrapper}>
-      <NavigationEvents
-         onDidFocus={this.getWishlists()}
-      />
-          <Header style={{ backgroundColor: 'white' }}>
-              <Left>
-                  <Button onPress={() => this.props.navigation.navigate("Home")} transparent>
-                      <Icon style={{color: 'gray'}} name='arrow-back' />
-                      <Title style={{ color: 'gray', fontWeight: "600" }}>   Wishlist</Title>
-                  </Button>
-              </Left>
-              <Right>
-              </Right>
-          </Header>
+        <NavigationEvents
+          onDidFocus={this.getWishlists()}
+        />
+        <Header style={{ backgroundColor: 'white' }}>
+          <Left>
+            <Button onPress={() => this.props.navigation.navigate("Home")} transparent>
+              <Icon style={{ color: 'gray' }} name='arrow-back' />
+              <Title style={{ color: 'gray', fontWeight: "600" }}>   Wishlist</Title>
+            </Button>
+          </Left>
+          <Right>
+          </Right>
+        </Header>
         <FlatList
           data={this.state.wishlists}
           renderItem={({ item }) =>
@@ -94,18 +96,18 @@ class Wishlist extends Component {
                   Rp {item.product_id.price}
                 </Text>
               </View>
-              <View> 
-              <View style={styles.footer}>
-                <Button transparent onPress={() => this.delete(item._id)} style={{marginRight: 130, marginBottom: -45 }}>
-                      <Icon name='trash' style={styles.trashIcon}  />
-                </Button>
-                <Button
-                  style={styles.buy}
-                  onPress={() => { navigation.navigate('Product', { item: item.product_id }); }}
-                >
-                  <Text style={{ fontSize: 12, color: 'white', marginLeft: 20 }} uppercase={false}>Beli</Text>
-                </Button>
-              </View>
+              <View>
+                <View style={styles.footer}>
+                  <Button transparent onPress={() => this.delete(item._id)} style={{ marginRight: 130, marginBottom: -45 }}>
+                    <Icon name='trash' style={styles.trashIcon} />
+                  </Button>
+                  <Button
+                    style={styles.buy}
+                    onPress={() => { navigation.navigate('Product', { item: item.product_id }); }}
+                  >
+                    <Text style={{ fontSize: 12, color: 'white', marginLeft: 20 }} uppercase={false}>Beli</Text>
+                  </Button>
+                </View>
               </View>
             </Button>
           }
@@ -156,11 +158,11 @@ const styles = StyleSheet.create({
     color: 'rgb(250, 89, 29)'
   },
   buy: {
-    color: 'white', 
+    color: 'white',
     fontSize: 12,
     backgroundColor: '#FF582F',
     borderRadius: 5,
-    width: 70, 
+    width: 70,
     marginLeft: 95,
     textAlign: 'right'
   },
@@ -168,9 +170,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   trashIcon: {
-		fontSize: 40,
-		color:'#bdbdbd',
-	},
+    fontSize: 40,
+    color: '#bdbdbd',
+  },
 });
 
 // const mapsStageToProps = (state) => {
